@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Pulliing ...';
                 git branch: 'main',
-                url : 'https://github.com/abdessalembenchrifa/homeworkjenkins.git';
+                url : 'https://github.com/Akarmous/CI-CD-GladOps.git';
             }
         }
     }

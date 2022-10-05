@@ -13,13 +13,13 @@ pipeline {
                 url : 'https://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@github.com/Akarmous/CI-CD-GladOps.git';
             }
         }
-        stage('SonarQube analysis') {
-         environment {
-                SCANNER_HOME = tool 'sonar 8.9'
+        stage("build & SonarQube analysis") {
+            agent any
+            steps {
+              withSonarQubeEnv('My SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+              }
             }
-        steps{
-        withSonarQubeEnv('sonarqube-8.9.7')
-    }
-        }
+          }
     }
 }

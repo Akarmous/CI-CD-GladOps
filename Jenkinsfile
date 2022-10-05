@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Pulliing ...';
                 git branch: 'main',
-                url : 'https://github.com/Akarmous/CI-CD-GladOps.git';
+                url : 'https://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@github.com/Akarmous/CI-CD-GladOps.git';
             }
         }
     }

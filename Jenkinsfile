@@ -20,4 +20,5 @@ pipeline {
         steps{
         withSonarQubeEnv('sonarqube-8.9.7')
     }
+        }
 }

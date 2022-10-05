@@ -15,7 +15,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonarQube') {
+                withSonarQubeEnv('http://192.168.1.18:9000') {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
             }

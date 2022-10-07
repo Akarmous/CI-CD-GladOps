@@ -15,22 +15,22 @@ pipeline {
                 git branch: 'abdessalem', credentialsId: '47d8419e-8cc7-442a-954a-c5590c279e70', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git';
             }
         }
-        stage('Testing maven') {
-		    steps {
-		    sh """/usr/share/maven/mvn -version"""
-	        }
-	    }
-	
-    	stage('Build') {
+	    stage('Build') {
       		steps {
         		sh 'mvn -B -DskipTests clean package'
       		}
     	}
-  
+	    
+        stage('Testing maven') {
+		    steps {
+		    sh """mvn -version"""
+	        }
+	    }
+	    
         stage("build & SonarQube analysis") {
             steps {
               withSonarQubeEnv('My SonarQube Server') {
-                sh '/usr/share/maven/mvn clean package sonar:sonar'
+                sh 'mvn clean package sonar:sonar'
               }
             }
           }

@@ -1,5 +1,8 @@
 pipeline {
-    agent any 
+    agent any
+    tools {
+    	maven 'MAVEN_HOME'
+    }
     stages {
         stage('Show date') {
             steps {
@@ -17,6 +20,13 @@ pipeline {
 		    sh """/usr/share/maven/mvn -version"""
 	        }
 	    }
+	
+    	stage('Build') {
+      		steps {
+        		sh 'mvn -B -DskipTests clean package'
+      		}
+    	}
+  
         stage("build & SonarQube analysis") {
             steps {
               withSonarQubeEnv('My SonarQube Server') {

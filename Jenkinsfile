@@ -21,6 +21,11 @@ stage('Testing maven') {
 		sh """mvn -version"""
 	      }
 }
-
+stage('Scan') {
+	steps {
+		withSonarQubeEnv(installationName: 'sq1') {
+		sh './mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:8.9.7-community:sonar'
+	      }
+}
 }
 }

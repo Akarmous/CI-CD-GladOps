@@ -9,8 +9,7 @@ pipeline {
         stage('Checkout GIT ') {
             steps {
                 echo 'Pulliing ...';
-                git branch: 'abdessalem',
-                url : 'https://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@github.com/Akarmous/CI-CD-GladOps.git';
+                git branch: 'abdessalem', credentialsId: '47d8419e-8cc7-442a-954a-c5590c279e70', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git';
             }
         }
         stage("build & SonarQube analysis") {

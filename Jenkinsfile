@@ -14,13 +14,13 @@ pipeline {
         }
         stage('Testing maven') {
 		    steps {
-		    sh """mvn -version"""
+		    sh """/usr/share/maven/mvn -version"""
 	        }
 	    }
         stage("build & SonarQube analysis") {
             steps {
               withSonarQubeEnv('My SonarQube Server') {
-                sh 'mvn clean package sonar:sonar'
+                sh '/usr/share/maven/mvn clean package sonar:sonar'
               }
             }
           }

@@ -34,6 +34,13 @@ pipeline {
               }
             }
           }
+          
+        stage("NEXUS") {
+			steps {
+				sh 'mvn deploy -DskipTests'
+              }
+            }
+          }  
         stage ("Tests unitaires") {
             steps {
                 echo "*********test started*********"

@@ -1,26 +1,38 @@
 pipeline {
-
-agent any
-
-stages {
-
-
-
-stage('Testing pass - 1') {
-steps {
-sh 'exit 0'
-}
-}
-
-stage('SonarQube test') {
-			steps {
-				sh "mvn sonar:sonar -Dsonar.projectKey=projetci -Dsonar.host.url=http://192.168.1.18:9000 -Dsonar.login=e7a84d5e31598a022de5e137d8420ac5187e548e"
-			}
-	 
-
-		}
-
-
-}  
-
+    agent any
+    tools {
+    	maven 'M2_HOME'
+    }
+    stages {
+        stage('Show date') {
+            steps {
+                sh """date"""
+            }
+        }
+        stage('Checkout GIT ') {
+            steps {
+                echo 'Pulliing ...';
+                git branch: 'Ahmed', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
+        }
+	    
+	    stage('compiler') {
+      		steps {
+        		sh 'mvn compile'
+      		}
+    	}
+	    stage('Build') {
+      		steps {
+        		sh 'mvn -B -DskipTests clean package'
+      		}
+    	}
+	    
+        stage('Testing maven') {
+		    steps {
+		    sh """mvn -version"""
+	        }
+	    }
+	    
+   
+        
+    }
 }

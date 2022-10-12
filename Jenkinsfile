@@ -14,7 +14,7 @@ pipeline {
                 echo 'Pulliing ...';
                 git branch: 'Ahmed', credentialsId: 'jenkins-ahmed-ci', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
         }
-	stage('compiler') {
+	stage('Compiler') {
       		steps {
         		sh 'mvn compile'
       		}
@@ -27,19 +27,18 @@ pipeline {
     	}
 	   
 	    
-        stage('Testing maven') {
+        stage('Maven version') {
 		    steps {
 		    sh """mvn -version"""
 	        }
 	    }
-        stage('Testing SonarQube') {
+        stage('SonarQube quality tests') {
 		    steps {
 		    sh "mvn sonar:sonar -Dsonar.projectKey=jenkins-ahmed -Dsonar.host.url=http://192.168.1.18:9000 -Dsonar.login=c3c260fec661be0c76af7f2bbc2e029ccab74278"
 	        }
 	    }
-	stage('Nexus') {
+	stage('Deploy to NEXUS') {
 			steps {
-				//sh 'mvn clean deploy -DskipTests'
 				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 			}
 		}

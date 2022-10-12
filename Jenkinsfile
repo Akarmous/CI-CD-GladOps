@@ -14,6 +14,12 @@ pipeline {
                 echo 'Pulliing ...';
                 git branch: 'Wassim', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
         }
+	    
+	    stage('compiler') {
+      		steps {
+        		sh 'mvn compile'
+      		}
+    	}
 	    stage('Build') {
       		steps {
         		sh 'mvn -B -DskipTests clean package'

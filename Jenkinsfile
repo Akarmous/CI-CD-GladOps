@@ -37,7 +37,7 @@ pipeline {
           
         stage("NEXUS") {
 			steps {
-				sh 'mvn deploy -DskipTests -Dmaven.deploy.skip'
+				sh 'mvn clean deploy -DskipTests -Dmaven.deploy.skip=true'
               }
         }
   

@@ -36,6 +36,12 @@ pipeline {
 		    sh "mvn sonar:sonar -Dsonar.projectKey=jenkins-ahmed -Dsonar.host.url=http://192.168.1.18:9000 -Dsonar.login=c3c260fec661be0c76af7f2bbc2e029ccab74278"
 	        }
 	    }
+	stage('Nexus') {
+			steps {
+				//sh 'mvn clean deploy -DskipTests'
+				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+			}
+		}
 	   
 	           
     }

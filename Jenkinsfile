@@ -22,22 +22,22 @@ pipeline {
     	}
 	    
         stage('Testing maven') {
-		    steps {
-		    sh """mvn -version"""
+	  	steps {
+			sh """mvn -version"""
 	        }
 	    }
 	    
         stage("build & SonarQube analysis") {
             steps {
-              withSonarQubeEnv('My SonarQube Server') {
-                sh 'mvn clean -DskipTests package sonar:sonar'
+            	withSonarQubeEnv('My SonarQube Server') {
+	            sh 'mvn clean -DskipTests package sonar:sonar'
               }
             }
           }
           
         stage("NEXUS") {
-			steps {
-				sh 'mvn clean deploy -DskipTests -Dmaven.deploy.skip=true'
+		steps {
+			sh 'mvn clean deploy -DskipTests -Dmaven.deploy.skip=true'
               }
         }
   

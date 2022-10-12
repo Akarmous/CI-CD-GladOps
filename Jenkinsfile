@@ -39,17 +39,7 @@ pipeline {
               }
             }
           }
-        stage ("Tests unitaires") {
-            steps {
-                echo "*********test started*********"
-                sh 'mvn test';
-                echo "*********test finished*********"
-                echo "*********Verification started*********"
-                sh 'mvn verify'
-                echo "*********verification finished*********"
-
-            }
-        }
+        
         
     }
 }

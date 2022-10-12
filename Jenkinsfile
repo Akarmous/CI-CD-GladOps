@@ -14,7 +14,16 @@ pipeline {
                 echo 'Pulliing ...';
                 git branch: 'Ahmed', credentialsId: 'jenkins-ahmed-ci', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
         }
-	 
+	stage('compiler') {
+      		steps {
+        		sh 'mvn compile'
+      		}
+    	}
+	    stage('Build') {
+      		steps {
+        		sh 'mvn -B -DskipTests clean package'
+      		}
+    	}
 	   
 	    
         stage('Testing maven') {
@@ -22,12 +31,7 @@ pipeline {
 		    sh """mvn -version"""
 	        }
 	    }
-	    stage('Build Artifact - Maven') {
-                     steps {
-                     sh "mvn clean package -DskipTests=true"
-                     archive 'target/*.jar'
-                }
-            }
+	   
 	           
     }
 }

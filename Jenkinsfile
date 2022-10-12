@@ -31,6 +31,11 @@ pipeline {
 		    sh """mvn -version"""
 	        }
 	    }
+        stage('Testing SonarQube') {
+		    steps {
+		    sh "mvn sonar:sonar -Dsonar.projectKey=jenkins-ahmed -Dsonar.host.url=http://192.168.1.18:9000 -Dsonar.login=c3c260fec661be0c76af7f2bbc2e029ccab74278"
+	        }
+	    }
 	   
 	           
     }

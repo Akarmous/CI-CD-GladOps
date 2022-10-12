@@ -19,33 +19,38 @@ public class SecteurActiviteController {
 	
 	// http://localhost:8089/SpringMVC/secteurActivite/retrieve-all-secteurActivite
 	@GetMapping("/retrieve-all-secteurActivite")
-    public List<SecteurActivite> getSecteurActivite() {
+	@ResponseBody
+	public List<SecteurActivite> getSecteurActivite() {
 		List<SecteurActivite> list = secteurActiviteService.retrieveAllSecteurActivite();
 		return list;
 	}
 
 	// http://localhost:8089/SpringMVC/secteurActivite/retrieve-secteurActivite/8
 	@GetMapping("/retrieve-secteurActivite/{secteurActivite-id}")
-    public SecteurActivite retrieveSecteurActivite(@PathVariable("secteurActivite-id") Long secteurActiviteId) {
+	@ResponseBody
+	public SecteurActivite retrieveSecteurActivite(@PathVariable("secteurActivite-id") Long secteurActiviteId) {
 		return secteurActiviteService.retrieveSecteurActivite(secteurActiviteId);
 	}
 
 	// http://localhost:8089/SpringMVC/secteurActivite/add-secteurActivite
 	@PostMapping("/add-secteurActivite")
-    public SecteurActivite addSecteurActivite(@RequestBody SecteurActivite sa) {
+	@ResponseBody
+	public SecteurActivite addSecteurActivite(@RequestBody SecteurActivite sa) {
 		SecteurActivite secteurActivite = secteurActiviteService.addSecteurActivite(sa);
 		return secteurActivite;
 	}
 
 	// http://localhost:8089/SpringMVC/secteurActivite/remove-secteurActivite/{secteurActivite-id}
 	@DeleteMapping("/remove-secteurActivite/{secteurActivite-id}")
-    public void removeSecteurActivite(@PathVariable("secteurActivite-id") Long secteurActiviteId) {
+	@ResponseBody
+	public void removeSecteurActivite(@PathVariable("secteurActivite-id") Long secteurActiviteId) {
 		secteurActiviteService.deleteSecteurActivite(secteurActiviteId);
 	}
 
 	// http://localhost:8089/SpringMVC/secteurActivite/modify-secteurActivite
 	@PutMapping("/modify-secteurActivite")
-    public SecteurActivite modifySecteurActivite(@RequestBody SecteurActivite secteurActivite) {
+	@ResponseBody
+	public SecteurActivite modifySecteurActivite(@RequestBody SecteurActivite secteurActivite) {
 		return secteurActiviteService.updateSecteurActivite(secteurActivite);
 	}
 

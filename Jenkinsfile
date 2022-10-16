@@ -28,13 +28,18 @@ pipeline {
 	      }
 	}
 	}
-	      
+
         stage("NEXUS") {
         	steps {
-		 sh 'mvn clean deploy '
+		 sh 'mvn clean deploy -DskipTests'
               }
         }
 
-
+        stage('JUnit'){
+                steps {
+                sh 'mvn test'
+                echo """ggggggggggggggggggggggggggggggggggggg"""
+                }
+              }
 }
 }

@@ -3,30 +3,25 @@ pipeline {
     tools {
     	maven 'M2_HOME'
     }
-    stages {
-        stage('Show date') {
-            steps {
-                sh """date"""
-            }
-        }
+    
         stage('Checkout GIT ') {
             steps {
-                echo 'Pulliing ...';
+                echo 'Pulling ...';
                 git branch: 'Wassim', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
         }
 	    
-	    stage('compiler') {
+	    stage('COMPILE') {
       		steps {
         		sh 'mvn compile'
       		}
     	}
-	    stage('Build') {
+	    stage('BUILD') {
       		steps {
         		sh 'mvn -B -DskipTests clean package'
       		}
     	}
 	    
-        stage('Testing maven') {
+        stage('MVN TEST') {
 		    steps {
 		    sh """mvn -version"""
 	        }
@@ -34,7 +29,7 @@ pipeline {
 	    
         stage("build & SonarQube analysis") {
             steps {
-              withSonarQubeEnv('My SonarQube Server') {
+              withSonarQubeEnv('SonarQube') {
                 sh 'mvn clean -DskipTests package sonar:sonar'
               }
             }

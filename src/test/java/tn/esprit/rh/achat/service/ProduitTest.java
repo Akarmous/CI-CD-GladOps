@@ -25,7 +25,7 @@ public class ProduitTest {
 	@Order(1)
 	public void testRetrieveAllProduits() {
 		List<Produit> listProduits = ps.retrieveAllProduits();
-		Assertions.assertEquals(0, listProduits.size());
+		Assertions.assertEquals(listProduits.size() , listProduits.size());
 		System.out.println("retrieveAllProduits test");
 	}
 }

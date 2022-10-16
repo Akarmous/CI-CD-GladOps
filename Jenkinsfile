@@ -41,6 +41,13 @@ pipeline {
 		 sh 'mvn clean -DskipTests deploy'
               }
         }
+	stage("TEST JUNIT"){
+		steps{
+		 sh'mvn test'
+			echo"""hahahahahahahahahah"""
+		}
+		
+		}
              
     }
 }

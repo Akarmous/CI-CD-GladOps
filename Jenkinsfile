@@ -34,7 +34,7 @@ pipeline {
 	    
         stage("build & SonarQube analysis") {
             steps {
-              withSonarQubeEnv('SonarQube') {
+              withSonarQubeEnv('My SonarQube Server') {
                 sh 'mvn clean -DskipTests package sonar:sonar'
               }
             }

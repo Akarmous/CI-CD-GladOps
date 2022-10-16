@@ -29,10 +29,10 @@ pipeline {
 	}
 	}
 	      
-	         // stage("NEXUS") {
-		//steps {
-			//sh 'mvn clean deploy -DskipTests -Dmaven.deploy.skip=true'
-             // }
-        //}
+	          stage("NEXUS") {
+		steps {
+			sh 'mvn clean deploy -DskipTests -Dmaven.deploy.skip=true'
+              }
+        }
 }
 }

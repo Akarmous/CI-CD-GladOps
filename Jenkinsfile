@@ -40,7 +40,7 @@ pipeline {
 		 sh 'mvn clean -DskipTests deploy'
               }
         }
-        
-        
+      
+       
     }
 

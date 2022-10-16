@@ -21,13 +21,13 @@ pipeline {
 		sh """mvn -version"""
 	      }
 	}
-	//stage('SonarQube analysis') {
-		//steps {
-		//withSonarQubeEnv(installationName: 'sq1') {
-		//sh 'mvn clean package sonar:sonar'
-	     // }
-	//}
-	//}
+	stage('SonarQube analysis') {
+		steps {
+		withSonarQubeEnv(installationName: 'sq1') {
+		sh 'mvn clean package sonar:sonar'
+	      }
+	}
+	}
 	      
 	          stage("NEXUS") {
 		steps {

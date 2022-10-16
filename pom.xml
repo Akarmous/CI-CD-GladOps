@@ -57,11 +57,9 @@
 
 
 
-
-
 	</dependencies>
 
-<<<<<<< Updated upstream
+
 	<!-- Deploy to Nexus -->
 	<distributionManagement>
 		<repository>
@@ -70,17 +68,6 @@
 		</repository>
 	</distributionManagement>
 
-=======
-
-	<distributionManagement>
-		<repository>
-			<id>deploymentRepo</id>
-			<url>http://192.168.1.126:8081/#browse/browse:maven-releases</url>
-		</repository>
-	</distributionManagement>
-
-
->>>>>>> Stashed changes
 	<build>
 		<plugins>
 			<plugin>

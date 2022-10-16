@@ -4,7 +4,7 @@ pipeline {
 		maven 'M2_HOME'}
       stages {
 	      stage('Checkout GIT ') {
-            steps {
+             		 steps {
                 echo 'Pulliing ...';
 		    git branch: 'ALA', credentialsId: 'test-jenkins-github', url: 'https://github.com/Akarmous/CI-CD-GladOps.git';
             }
@@ -19,7 +19,7 @@ pipeline {
 	stage('Testing maven') {
 		steps {
 		sh """mvn -version"""
-	      }
+	      } 
 	}
 	stage('SonarQube analysis') {
 		steps {
@@ -29,9 +29,9 @@ pipeline {
 	}
 	}
 	      
-	 stage("NEXUS") {
-	        steps {
-		sh 'mvn clean deploy -DskipTests -Dmaven.deploy.skip=true'
+        stage("NEXUS") {
+        	steps {
+		 sh 'mvn clean deploy -DskipTests -Dmaven.deploy.skip=true'
               }
         }
 }

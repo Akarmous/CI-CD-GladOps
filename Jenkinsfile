@@ -4,14 +4,15 @@ pipeline {
     	maven 'M2_HOME'
     }
     
-        stage('Checkout GIT ') {
+	stages {
+	stage('Checkout GIT ') {
             steps {
                 echo 'Pulling ...';
                 git branch: 'Wassim', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            
 	    }
         }
 	    
-	    stage('COMPILE') {
+	  stage('COMPILE') {
       		steps {
         		sh 'mvn compile'
       		}
@@ -42,4 +43,4 @@ pipeline {
         }
              
     }
-
+}

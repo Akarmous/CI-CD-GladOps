@@ -31,11 +31,7 @@ pipeline {
 	      
         stage("NEXUS") {
         	steps {
-<<<<<<< Updated upstream
-		 sh 'mvn clean deploy -DskipTests '
-=======
 		 sh 'mvn clean deploy '
->>>>>>> Stashed changes
               }
         }
 

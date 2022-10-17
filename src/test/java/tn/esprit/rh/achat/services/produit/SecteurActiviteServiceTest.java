@@ -26,7 +26,7 @@ public class SecteurActiviteServiceTest {
     @Autowired
     ISecteurActiviteService as;
 
-  /*  @Test
+    @Test
     @Order(1)
     public void testRetrieveAllISecteurActiviteServices() {
         List<SecteurActivite> listSecteurActivite = as.retrieveAllSecteurActivite();
@@ -41,14 +41,14 @@ public class SecteurActiviteServiceTest {
     	SecteurActivite savedSecteur= as.addSecteurActivite(sa);
  assertEquals(sa.getLibelleSecteurActivite(), savedSecteur.getLibelleSecteurActivite());
  }
-	    @Test
+	  /*  @Test
     @Order(3)
      void testRetrieveSecteurActivite() {
-    	SecteurActivite p = ps.retrieveProduit((long) 1);
-    assertEquals("1", as.getIdProduit().toString());
+    	SecteurActivite p = ps.retrieveSecteurActivite((long) 1);
+    assertEquals("1", as.getLibelleSecteurActivite().toString());
     } */
     @Test
-    @Order(1)
+    @Order(3)
      void testDeleteSecteurActivite() {
     	as.deleteSecteurActivite((long) 1);
     assertNull(as.retrieveSecteurActivite((long) 1));

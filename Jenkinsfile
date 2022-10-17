@@ -22,15 +22,17 @@ pipeline {
         }
 	    stage('Build') {
       		steps {
-			 try {
-				 sh 'mvn -B -DskipTests clean package';
-				 currentBuild.result = 'SUCCESS'
-			 } catch (any) {
-				 currentBuild.result = 'FAILURE'
-				 throw any
-			 } finally {
-				 step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'me@me.com', sendToIndividuals: true])
-			 }
+			step {
+				try {
+					sh 'mvn -B -DskipTests clean package';
+					currentBuild.result = 'SUCCESS'
+				} catch (any) {
+					currentBuild.result = 'FAILURE'
+					throw any
+				} finally {
+					step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'me@me.com', sendToIndividuals: true])
+				}
+			}
 		}
 	    }
 	    

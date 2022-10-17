@@ -1,6 +1,7 @@
 package tn.esprit.rh.achat.entities;
 
 import java.io.Serializable;
+
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,4 +32,15 @@ public class SecteurActivite implements Serializable{
 	@ManyToMany(mappedBy="secteurActivites")
 	@JsonIgnore
 	private Set<Fournisseur> fournisseurs;
+	public String getLibelleSecteurActivite() {
+		return libelleSecteurActivite;
+	}
+	public void setLibelleSecteurActivite(String libelleSecteurActivite) {
+		this.libelleSecteurActivite = libelleSecteurActivite;
+	}
+	public SecteurActivite(String codeSecteurActivite, String libelleSecteurActivite) {
+		super();
+		this.codeSecteurActivite = codeSecteurActivite;
+		this.libelleSecteurActivite = libelleSecteurActivite;
+	}
 }

@@ -31,8 +31,8 @@ pipeline {
 					throw any
 				} finally {
 					step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdeslem.bc@gmail.com', sendToIndividuals: true]);
-					emailext body: "$currentBuild.result ${currentBuild.result}",
-					      subject: '${currentBuild.result}',
+					emailext body: "Build ${env.BUILD_NUMBER} ran on ${env.NODE_NAME} and terminated with ${currentResult}",
+				    subject: "${env.JOB_NAME} ${env.BUILD_NUMBER}: ${currentResult}",
 				    to: 'abdeslem.bc@gmail.com'
 				}
 			}

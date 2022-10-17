@@ -54,7 +54,8 @@ pipeline {
 		steps {
 			ansiColor('vga'){
 			sh 'mvn clean deploy -DskipTests'
-			}}
+			}
+		}
         }
   
         stage ("Tests unitaires") {

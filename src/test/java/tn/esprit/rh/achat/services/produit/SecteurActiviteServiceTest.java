@@ -18,12 +18,12 @@ public class SecteurActiviteServiceTest {
     @Autowired
     ISecteurActiviteService as;
 
-    @Test
+  /*  @Test
     @Order(1)
     public void testRetrieveAllISecteurActiviteServices() {
         List<SecteurActivite> listSecteurActivite = as.retrieveAllSecteurActivite();
         Assertions.assertEquals(0, listSecteurActivite.size());
-    }
+    } */
     
     @Test
  @Order(2)

@@ -3,7 +3,6 @@ pipeline {
     tools {
     	maven 'MAVEN_HOME'
     }
-	ansiColor('xterm'){
     stages {
         stage('Show date') {
             steps {
@@ -38,8 +37,9 @@ pipeline {
           
         stage("NEXUS") {
 		steps {
+			ansiColor('xterm'){
 			sh 'mvn clean deploy -DskipTests'
-              }
+			}}
         }
   
         stage ("Tests unitaires") {
@@ -55,5 +55,4 @@ pipeline {
         }
         
     }
-	}
 }

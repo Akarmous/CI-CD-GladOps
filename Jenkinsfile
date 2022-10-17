@@ -29,18 +29,21 @@ pipeline {
 	}
 	}
 
+        stage('JUnit/Mockito'){
+            steps {
+         sh 'mvn test'
+         echo """ggggggggggggggggggggggggggggggggggggg"""
+                   }
+              }
+
+
         stage("NEXUS") {
         	steps {
 		 sh 'mvn clean deploy -DskipTests'
               }
         }
 
-        stage('JUnit/Mockito'){
-                steps {
-                sh 'mvn test'
-                echo """ggggggggggggggggggggggggggggggggggggg"""
-                }
-              }
+
 
 }
 }

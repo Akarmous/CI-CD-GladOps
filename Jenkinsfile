@@ -8,9 +8,9 @@ pipeline {
             steps {
 		    ansiColor('vga'){
                 sh """date""" ;
-			    emailext body: 'Build $env.BUILD_NUMBER ran on $env.NODE_NAME and terminated with $currentResult',
-				    subject: '$env.JOB_NAME $env.BUILD_NUMBER: $currentResult',
-				    to: 'abdo.est@live.fr'
+			    emailext body: 'Build ${env.BUILD_NUMBER} ran on ${env.NODE_NAME} and terminated with ${currentResult}',
+				    subject: '${env.JOB_NAME} ${env.BUILD_NUMBER}: ${currentResult}',
+				    to: 'abdeslem.bc@gmail.com'
 		    }
 	    }
         }

@@ -30,7 +30,7 @@ public class SecteurActiviteServiceTest {
     @Order(1)
     public void testRetrieveAllISecteurActiviteServices() {
         List<SecteurActivite> listSecteurActivite = as.retrieveAllSecteurActivite();
-        Assertions.assertEquals(0, listSecteurActivite.size());
+        Assertions.assertEquals(1, listSecteurActivite.size());
     } 
     
     @Test

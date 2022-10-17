@@ -30,7 +30,7 @@ public class SecteurActiviteServiceTest {
     @Order(1)
     public void testRetrieveAllISecteurActiviteServices() {
         List<SecteurActivite> listSecteurActivite = as.retrieveAllSecteurActivite();
-        Assertions.assertEquals(1, listSecteurActivite.size());
+        Assertions.assertEquals(0, listSecteurActivite.size());
     } 
     
     @Test
@@ -50,8 +50,8 @@ public class SecteurActiviteServiceTest {
     @Test
     @Order(3)
      void testDeleteSecteurActivite() {
-    	as.deleteSecteurActivite((long) 2);
-    assertNull(as.retrieveSecteurActivite((long) 2));
+    	as.deleteSecteurActivite((long) 1);
+    assertNull(as.retrieveSecteurActivite((long) 1));
     }
 
 }

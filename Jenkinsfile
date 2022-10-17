@@ -58,7 +58,7 @@ pipeline {
     }
 	post {
     		always {
-    		[$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdo.est@live.fr', sendToIndividuals: true]
+    		step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdo.est@live.fr', sendToIndividuals: true])
 		}
 	}
 }

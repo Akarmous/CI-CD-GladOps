@@ -43,7 +43,7 @@ pipeline {
         }
 	stage("TEST JUNIT"){
 		steps{
-		 sh'mvn test -DskipTests'
+		 sh'mvn test'
 		}
 		
 	}

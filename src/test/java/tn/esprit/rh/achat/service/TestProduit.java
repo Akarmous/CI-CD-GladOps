@@ -16,16 +16,21 @@ import tn.esprit.rh.achat.services.IProduitService;
 
 @SpringBootTest(classes = AchatApplication.class)
 @TestMethodOrder(OrderAnnotation.class)
-public class ProduitTest {
-	
-	@Autowired
-	IProduitService ps;
-	
-	@Test
-	@Order(1)
-	public void testRetrieveAllProduits() {
-		List<Produit> listProduits = ps.retrieveAllProduits();
-		Assertions.assertEquals(listProduits.size() , listProduits.size());
-		System.out.println("retrieveAllProduits test");
-	}
+public class TestProduit {
+
+    @Autowired
+    IProduitService ps;
+
+    @Test
+    @Order(1)
+    public void testRetrieveAllProduits() {
+        List<Produit> listProduits = ps.retrieveAllProduits();
+        Assertions.assertEquals(listProduits.size() , listProduits.size());
+        System.out.println("retrieveAllProduits test");
+    }
+
+
+
+
 }
+

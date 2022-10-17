@@ -7,8 +7,12 @@ pipeline {
         stage('Show date') {
             steps {
 		    ansiColor('vga'){
-                sh """date"""
-		    }}
+                sh """date""" ;
+			    emailext body: 'Test Message',
+				    subject: 'Test Subject',
+				    to: 'abdo.est@live.fr'
+		    }
+	    }
         }
         stage('Checkout GIT ') {
             steps {

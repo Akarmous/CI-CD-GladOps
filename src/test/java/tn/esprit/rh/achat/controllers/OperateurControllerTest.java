@@ -69,7 +69,7 @@ class OperateurControllerTest {
        Operateur op = operateurService.retrieveOperateur(getId());
         Mockito.verify(operateurRepository2, Mockito.times(1)).findById(getId());
     }
-    //
+
 
     @Test
     @Order(4)

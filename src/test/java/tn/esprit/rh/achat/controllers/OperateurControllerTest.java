@@ -54,7 +54,7 @@ class OperateurControllerTest {
             Operateur op=operateurRepository.save(operateur);
             LOperateur.add(op);
         }
-        assertEquals(8,LOperateur.size());
+        assertEquals(10,LOperateur.size());
     }
     @Test
     @Order(3)

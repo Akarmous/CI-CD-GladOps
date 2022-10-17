@@ -30,7 +30,10 @@ pipeline {
 					currentBuild.result = 'FAILURE'
 					throw any
 				} finally {
-					step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'me@me.com', sendToIndividuals: true])
+					step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdeslem.bc@gmail.com', sendToIndividuals: true]);
+					 step(emailext body: "$currentBuild.result ${currentBuild.result}",
+					      subject: '${currentBuild.result}',
+				    to: 'abdeslem.bc@gmail.com')
 				}
 			}
 		}

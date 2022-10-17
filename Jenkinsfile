@@ -41,5 +41,11 @@ pipeline {
                 echo """ggggggggggggggggggggggggggggggggggggg"""
                 }
               }
+              stage('MOKITO'){
+                              steps {
+                              sh 'mvn test'
+                              echo """ggggggggggggggggggggggggggggggggggggg"""
+                              }
+                            }
 }
 }

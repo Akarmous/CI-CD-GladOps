@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+    tools {
+    	maven 'M2_HOME'
+    }
+    stages {
+        stage('Show date') {
+            steps {
+                sh """date"""
+            }
+        }
+        stage('Checkout GIT ') {
+            steps {
+                echo 'Pulliing ...';
+                git branch: 'ranim', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
+        }
+	    
+	    stage('compiler') {
+      		steps {
+        		sh 'mvn compile'
+      		}
+    	}
+	    stage('Build') {
+      		steps {
+        		sh 'mvn -B -DskipTests clean package'
+      		}
+    	}
+	    
+        stage('Testing maven') {
+		    steps {
+		    sh """mvn -version"""
+	        }
+	    }
+	stage("build & SonarQube analysis") {
+            	    steps {
+              withSonarQubeEnv('SonarServer') {
+                    sh 'mvn clean -DskipTests package sonar:sonar'
+              }
+            }
+          }
+        stage("NEXUS") {
+        	steps {
+		 sh 'mvn clean -DskipTests deploy'
+              }
+        }
+	stage("TEST JUNIT"){
+		steps{
+		 sh'mvn test -DskipTests'
+		}
+		
+	}
+        
+    }
+}

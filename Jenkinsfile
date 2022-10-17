@@ -6,8 +6,9 @@ pipeline {
     stages {
         stage('Show date') {
             steps {
+		    ansiColor('vga'){
                 sh """date"""
-            }
+		    }}
         }
         stage('Checkout GIT ') {
             steps {
@@ -37,7 +38,7 @@ pipeline {
           
         stage("NEXUS") {
 		steps {
-			ansiColor('xterm'){
+			ansiColor('vga'){
 			sh 'mvn clean deploy -DskipTests'
 			}}
         }

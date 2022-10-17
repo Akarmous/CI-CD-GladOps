@@ -42,7 +42,7 @@ public class SecteurActiviteServiceTest {
     @Test
     @Order(1)
      void testDeleteSecteurActivite() {
-    	ps.deleteSecteurActivite((long) 1);
+    	as.deleteSecteurActivite((long) 1);
     assertNull(as.retrieveSecteurActivite((long) 1));
     }
 

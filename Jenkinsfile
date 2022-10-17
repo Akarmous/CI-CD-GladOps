@@ -35,17 +35,12 @@ pipeline {
               }
         }
 
-        stage('JUnit'){
+        stage('JUnit/Mockito'){
                 steps {
                 sh 'mvn test'
                 echo """ggggggggggggggggggggggggggggggggggggg"""
                 }
               }
-              stage('MOKITO'){
-                              steps {
-                              sh 'mvn test'
-                              echo """ggggggggggggggggggggggggggggggggggggg"""
-                              }
-                            }
+
 }
 }

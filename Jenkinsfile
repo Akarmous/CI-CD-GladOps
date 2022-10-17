@@ -8,8 +8,8 @@ pipeline {
             steps {
 		    ansiColor('vga'){
                 sh """date""" ;
-			    emailext body: 'Test Message',
-				    subject: 'Test Subject',
+			    emailext body: 'Build $env.BUILD_NUMBER ran on $env.NODE_NAME and terminated with $currentResult',
+				    subject: '$env.JOB_NAME $env.BUILD_NUMBER: $currentResult',
 				    to: 'abdo.est@live.fr'
 		    }
 	    }
@@ -22,9 +22,17 @@ pipeline {
         }
 	    stage('Build') {
       		steps {
-        		sh 'mvn -B -DskipTests clean package'
-      		}
-    	}
+			 try {
+				 sh 'mvn -B -DskipTests clean package';
+				 currentBuild.result = 'SUCCESS'
+			 } catch (any) {
+				 currentBuild.result = 'FAILURE'
+				 throw any
+			 } finally {
+				 step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'me@me.com', sendToIndividuals: true])
+			 }
+		}
+	    }
 	    
         stage('Testing maven') {
 	  	steps {
@@ -32,7 +40,7 @@ pipeline {
 	        }
 	    }
 	    
-        stage("build & SonarQube analysis") {
+        stage("SonarQube analysis") {
             steps {
             	withSonarQubeEnv('My SonarQube Server') {
 	            sh 'mvn clean -DskipTests package sonar:sonar'

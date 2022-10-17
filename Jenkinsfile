@@ -67,7 +67,9 @@ pipeline {
         }
 	    stage('Email Build Status'){
                 steps{
-                    emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} More info at: ${env.BUILD_URL}", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}" 
+                    emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} More info at: ${env.BUILD_URL}", 
+			    to: 'abdeslem.bc@gmail.com'
+			    subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}" 
                 }
             }
         

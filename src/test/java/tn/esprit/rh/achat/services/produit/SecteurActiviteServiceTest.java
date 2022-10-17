@@ -13,7 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import tn.esprit.rh.achat.entities.SecteurActivite;
 import tn.esprit.rh.achat.services.ISecteurActiviteService;
-
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SecteurActiviteServiceTest {
 	
 	

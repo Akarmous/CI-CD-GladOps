@@ -3,6 +3,7 @@ pipeline {
     tools {
     	maven 'MAVEN_HOME'
     }
+	ansiColor('xterm'){
     stages {
         stage('Show date') {
             steps {
@@ -54,4 +55,5 @@ pipeline {
         }
         
     }
+	}
 }

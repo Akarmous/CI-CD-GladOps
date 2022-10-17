@@ -56,12 +56,12 @@ class OperateurControllerTest {
         }
         assertEquals(10,LOperateur.size());
     }
-    @Test
-    @Order(3)
-    void deleteAll() {
-        operateurRepository.deleteAll();
-        assertEquals(0,operateurRepository.findAll().spliterator().estimateSize());
-    }
+   // @Test
+   // @Order(3)
+   // void deleteAll() {
+      //  operateurRepository.deleteAll();
+      //  assertEquals(0,operateurRepository.findAll().spliterator().estimateSize());
+   // }
     @Test
     @Order(2)
     void retrieveOperateur() {

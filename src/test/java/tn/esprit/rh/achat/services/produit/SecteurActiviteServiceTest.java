@@ -50,8 +50,8 @@ public class SecteurActiviteServiceTest {
     @Test
     @Order(3)
      void testDeleteSecteurActivite() {
-    	as.deleteSecteurActivite((long) 1);
-    assertNull(as.retrieveSecteurActivite((long) 1));
+    	as.deleteSecteurActivite((long) 2);
+    assertNull(as.retrieveSecteurActivite((long) 2));
     }
 
 }

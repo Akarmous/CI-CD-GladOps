@@ -59,7 +59,7 @@ pipeline {
 						sh 'mvn verify';
 						echo "*********Test finished with SUCCESS *********"
 					}catch (any) {
-						echo -e "*********Test finished with FAILURE *********" ;
+						echo "*********Test finished with FAILURE *********" ;
 						throw any
 					} finally {
 						emailext body: """${currentBuild.currentResult}: stage "JUNIT / MOCKITO" build n°${env.BUILD_NUMBER}  

@@ -3,6 +3,9 @@ pipeline {
 	tools {
 		maven 'MAVEN_HOME'
 		}
+	options {
+        ansiColor('xterm')
+    }
 	stages {
 		/*stage('Show date') {
             steps {
@@ -17,6 +20,8 @@ pipeline {
         }*/
         stage('GIT ') {
             steps {
+				echo "\033[34m*********Tests Started*********\033[0m";
+				echo "\033[34m*********Tests Started*********\033[0m";
             	echo 'Pulliing ...';
                 git branch: 'abdessalem', credentialsId: '47d8419e-8cc7-442a-954a-c5590c279e70', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git';
             }
@@ -54,7 +59,7 @@ pipeline {
 	    	steps {
 				script {
 					try {
-						echo "*********Tests Started*********";
+						echo "\033[34m*********Tests Started*********\033[0m";
 						sh 'mvn test';
 						sh 'mvn verify';
 						echo "*********Test finished with SUCCESS *********"

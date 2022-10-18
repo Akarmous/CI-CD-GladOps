@@ -60,10 +60,10 @@ pipeline {
 						echo "\033[34m*********Stage NEXUS Started*********\033[0m";
 						sh 'mvn clean deploy -DskipTests'
 						echo "\033[42m\033[97m*********NEXUS deployement finished with SUCCESS *********\033[0m"
-					}catch{
+					} catch{
 						echo "\033[31m*********NEXUS deployement finished with FAILURE *********\033[0m" ;
 						throw any
-					}finally{
+					} finally{
 						echo "\033[34m*********Mail Sending*********\033[0m";
 						emailext body: """${currentBuild.currentResult}: stage "NEXUS" build n°${env.BUILD_NUMBER}  
 						More info at: ${env.BUILD_URL}""", 
@@ -81,7 +81,7 @@ pipeline {
 						sh 'mvn test';
 						sh 'mvn verify';
 						echo "\033[42m\033[97m*********Test finished with SUCCESS *********\033[0m"
-					}catch (any) {
+					} catch (any) {
 						echo "\033[31m*********Test finished with FAILURE *********\033[0m" ;
 						throw any
 					} finally {

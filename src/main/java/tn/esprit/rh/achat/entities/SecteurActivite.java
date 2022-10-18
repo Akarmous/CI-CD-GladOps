@@ -43,4 +43,10 @@ public class SecteurActivite implements Serializable{
 		this.codeSecteurActivite = codeSecteurActivite;
 		this.libelleSecteurActivite = libelleSecteurActivite;
 	}
+	public Long getIdSecteurActivite() {
+		return idSecteurActivite;
+	}
+	public void setIdSecteurActivite(Long idSecteurActivite) {
+		this.idSecteurActivite = idSecteurActivite;
+	}
 }

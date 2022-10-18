@@ -41,12 +41,12 @@ public class SecteurActiviteServiceTest {
     	SecteurActivite savedSecteur= as.addSecteurActivite(sa);
  assertEquals(sa.getLibelleSecteurActivite(), savedSecteur.getLibelleSecteurActivite());
  }
-	  /*  @Test
+	    @Test
     @Order(3)
      void testRetrieveSecteurActivite() {
     	SecteurActivite p = ps.retrieveSecteurActivite((long) 1);
-    assertEquals("1", as.getLibelleSecteurActivite().toString());
-    } */
+    assertEquals("1", ps.getIdSecteurActivite().toString());
+    } 
     @Test
     @Order(3)
      void testDeleteSecteurActivite() {

@@ -44,8 +44,8 @@ public class SecteurActiviteServiceTest {
 	    @Test
     @Order(3)
      void testRetrieveSecteurActivite() {
-    	SecteurActivite p = ps.retrieveSecteurActivite((long) 1);
-    assertEquals("1", ps.getIdSecteurActivite().toString());
+    	SecteurActivite p = as.retrieveSecteurActivite((long) 1);
+    assertEquals("1", as.getIdSecteurActivite().toString());
     } 
     @Test
     @Order(3)

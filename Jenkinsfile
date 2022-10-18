@@ -4,12 +4,7 @@ pipeline {
     	maven 'M2_HOME'
     }
     stages {
-      
-     stage('Checkout GIT ') {
-            steps {
-                echo 'Pulliing ...';
-                git branch: 'Ahmed', credentialsId: 'ahmed-jenkins-ci1', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
-        }
+
 	stage('Compile') {
       		steps {
         		sh 'mvn compile'

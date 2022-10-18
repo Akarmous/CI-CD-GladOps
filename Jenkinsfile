@@ -52,20 +52,22 @@ pipeline {
     	}
     	stage ("JUNIT / MOCKITO") {
 	    	steps {
-				try {
-					echo "*********Tests Started*********";
-					sh 'mvn test';
-					sh 'mvn verify';
-					echo "*********Test finished with SUCCESS *********"
-				}catch (any) {
-					echo -e "*********Test finished with FAILURE *********" ;
-					throw any
+				script {
+					try {
+						echo "*********Tests Started*********";
+						sh 'mvn test';
+						sh 'mvn verify';
+						echo "*********Test finished with SUCCESS *********"
+					}catch (any) {
+						echo -e "*********Test finished with FAILURE *********" ;
+						throw any
 					} finally {
 						emailext body: """${currentBuild.currentResult}: stage "JUNIT / MOCKITO" build n°${env.BUILD_NUMBER}  
 						More info at: ${env.BUILD_URL}""", 
-			    		to: 'abdeslem.bc@gmail.com',
-			    		subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
-					}           	
+		    			to: 'abdeslem.bc@gmail.com',
+		    			subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
+					} 
+				}          	
 			}
     	}
 	}

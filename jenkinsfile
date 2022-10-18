@@ -36,20 +36,20 @@ pipeline {
 		 sh 'mvn clean -DskipTests deploy'
               }
         }
-        stage("build & SonarQube analysis") {
-            	    steps {
-              withSonarQubeEnv('SonarServer') {
-                    sh 'mvn clean -DskipTests package sonar:sonar'
-              }
-            }
-          }
+       
 	stage("TEST JUNIT"){
 		steps{
 		 sh'mvn test -DskipTests'
 		}
 		
 	}
-
+ stage("build & SonarQube analysis") {
+            	    steps {
+              withSonarQubeEnv('SonarServer') {
+                    sh 'mvn clean -DskipTests package sonar:sonar'
+              }
+            }
+          }
         
     }
 }

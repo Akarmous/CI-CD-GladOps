@@ -4,11 +4,7 @@ pipeline {
     	maven 'M2_HOME'
     }
     stages {
-        stage('Show date') {
-            steps {
-                sh """date"""
-            }
-        }
+       
         stage('Checkout GIT ') {
             steps {
                 echo 'Pulliing ...';

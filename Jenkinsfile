@@ -52,9 +52,7 @@ pipeline {
     	stage("NEXUS") {
 			steps {
 				echo "\033[34m*********Stage NEXUS Started*********\033[0m";
-				ansiColor('vga'){
-					sh 'mvn clean deploy -DskipTests'
-				}
+				sh 'mvn clean deploy -DskipTests'
 			}
     	}
     	stage ("JUNIT / MOCKITO") {

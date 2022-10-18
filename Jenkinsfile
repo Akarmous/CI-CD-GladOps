@@ -10,6 +10,7 @@ pipeline {
                 
                 git branch: 'Ahmed', credentialsId: 'jenkins-ahmed-ci', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
         }
+    }
 	stage('Compile') {
       		steps {
         		sh 'mvn compile'

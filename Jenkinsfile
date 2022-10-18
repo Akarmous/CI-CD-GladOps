@@ -4,22 +4,18 @@ pipeline {
     	maven 'M2_HOME'
     }
     stages {
-        stage('Show date') {
-            steps {
-                sh """date"""
-            }
-        }
-        stage('Checkout GIT ') {
+      
+        stage('GIT') {
             steps {
                 echo 'Pulliing ...';
                 git branch: 'Ahmed', credentialsId: 'jenkins-ahmed-ci', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            }
         }
-	stage('Compiler') {
+	stage('Compile') {
       		steps {
         		sh 'mvn compile'
       		}
     	}
-		stage('unit test') {
+		stage('Unit tests') {
       		steps {
         		sh 'mvn test'
       		}
@@ -32,11 +28,6 @@ pipeline {
     	}
 	   
 	    
-        stage('Maven version') {
-		    steps {
-		    sh """mvn -version"""
-	        }
-	    }
         stage('SonarQube quality tests') {
 		    steps {
 		    sh "mvn sonar:sonar -Dsonar.projectKey=jenkins-ahmed -Dsonar.host.url=http://192.168.1.18:9000 -Dsonar.login=c3c260fec661be0c76af7f2bbc2e029ccab74278"

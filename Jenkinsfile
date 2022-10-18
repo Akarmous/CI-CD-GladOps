@@ -4,7 +4,7 @@ pipeline {
 		maven 'MAVEN_HOME'
 		}
 	stages {
-		stage('Show date') {
+		/*stage('Show date') {
             steps {
 		    	ansiColor('vga'){
 			    	sh """date""" ;
@@ -14,14 +14,14 @@ pipeline {
 			    	subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
 		    	}
 	    	}
-        }
-        stage('Checkout GIT ') {
+        }*/
+        stage('GIT ') {
             steps {
             	echo 'Pulliing ...';
                 git branch: 'abdessalem', credentialsId: '47d8419e-8cc7-442a-954a-c5590c279e70', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git';
             }
         }
-		stage('Build') {
+		stage('BUILD') {
 			steps {
 				script {
 					try {
@@ -35,19 +35,14 @@ pipeline {
 					}
 				}
 			}
-		}	    
-    	stage('Testing maven') {
-			steps {
-				sh """mvn -version"""
-			}
-		}	    
-    	stage("SonarQube analysis") {
+		}
+		stage("SonarQube") {
     		steps {
 	        	withSonarQubeEnv('My SonarQube Server') {
 					sh 'mvn clean -DskipTests package sonar:sonar'
             	}
         	}
-		}  
+		}	    
     	stage("NEXUS") {
 			steps {
 				ansiColor('vga'){
@@ -60,20 +55,17 @@ pipeline {
 				try {
 					echo "\x1b[31m*********Tests Started\033[0m*********";
 					sh 'mvn test';
+					sh 'mvn verify';
 					echo "*********Test finished with SUCCESS *********"
 				}catch (any) {
 					echo -e "\x1b[31m*********Test finished with FAILURE *********\033[0m" ;
 					throw any
 					} finally {
-						emailext body: """${currentBuild.currentResult}: stage "${env.STAGE_NAME}" build n°${env.BUILD_NUMBER}  
+						emailext body: """${currentBuild.currentResult}: stage "JUNIT / MOCKITO" build n°${env.BUILD_NUMBER}  
 						More info at: ${env.BUILD_URL}""", 
 			    		to: 'abdeslem.bc@gmail.com',
 			    		subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
 					}           	
-            	
-            	// echo "*********Verification started*********"
-            	// sh 'mvn verify'
-            	// echo "*********verification finished*********"
 			}
     	}
 		stage('Email Build Status'){
@@ -87,7 +79,7 @@ pipeline {
 	}
 	post {
     	always {
-    		step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdo.est@live.fr', sendToIndividuals: true])
+    		step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdeslem.bc@gmail.com', sendToIndividuals: true])
 		}
 	}
 }

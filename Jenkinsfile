@@ -57,13 +57,13 @@ pipeline {
                 }
                 }
 
-             stage("DockerHub") {
+             stage("DockerLogin") {
                 steps {
                 sh 'Docker login --username alakrms --password Azerty789+'
                 }
                 }
 
-              stage("DockerHub") {
+              stage("DockerPush") {
                  steps {
                  sh 'Docker push alakrms/achat'
                 }

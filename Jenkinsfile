@@ -12,18 +12,18 @@ pipeline {
 	    }
         }
 	    
-	  stage('COMPILE') {
+	 /* stage('COMPILE') {
       		steps {
         		sh 'mvn compile'
       		}
-    	}
+    	}*/
 	    stage('BUILD') {
       		steps {
         		sh 'mvn -B -DskipTests clean package'
       		}
     	}
 	    
-        stage('MVN TEST') {
+        /*stage('MVN TEST') {
 		    steps {
 		    sh """mvn -version"""
 	        }
@@ -46,7 +46,15 @@ pipeline {
 		 sh'mvn test'
 		}
 		
-	}
+	}*/
+		
+	stage('Dockerfile') {
+      		steps {
+        		sh '''docker build -t wabes/achat .
+			docker login --username wabes --password 5Arctic-%2022
+			docker push wabes/achat'''
+      		}
+    	}
              
     }
 }

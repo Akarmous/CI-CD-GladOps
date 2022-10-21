@@ -12,18 +12,18 @@ pipeline {
 	    }
         }
 	    
-	 /* stage('COMPILE') {
+	  stage('COMPILE') {
       		steps {
         		sh 'mvn compile'
       		}
-    	}*/
+    	}
 	    stage('BUILD') {
       		steps {
         		sh 'mvn -B -DskipTests clean package'
       		}
     	}
 	    
-        /*stage('MVN TEST') {
+        stage('MVN TEST') {
 		    steps {
 		    sh """mvn -version"""
 	        }
@@ -46,7 +46,7 @@ pipeline {
 		 sh'mvn test'
 		}
 		
-	}*/
+	}
 		
 	stage('Dockerfile') {
       		steps {
@@ -55,6 +55,11 @@ pipeline {
 			docker push wabes/achat'''
       		}
     	}
+	/*stage('Dockerfile') {
+      		steps {
+        		sh '''docker run -t wabes/achat .'''
+      		}
+    	}*/
              
     }
 }

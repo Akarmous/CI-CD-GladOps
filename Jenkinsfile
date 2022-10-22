@@ -94,7 +94,6 @@ pipeline {
 				}          	
 			}
     	}
-	}
 		stage('Docker Image Build ') {
 		    steps {
 			    sh 'docker built -t ${DockerHubUsername}/achat'

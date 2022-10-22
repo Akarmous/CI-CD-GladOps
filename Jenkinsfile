@@ -2,10 +2,10 @@ pipeline {
 	agent any
 	tools {
 		maven 'MAVEN_HOME'
-		}
+	}
 	options {
-        ansiColor('xterm')
-    }
+        	ansiColor('xterm')
+	}
 	stages {
 		/*stage('Show date') {
             steps {
@@ -107,4 +107,5 @@ pipeline {
     		step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdeslem.bc@gmail.com', sendToIndividuals: true])
 		}
 	}
+}
 }

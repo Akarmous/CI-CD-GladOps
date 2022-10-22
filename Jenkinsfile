@@ -105,16 +105,10 @@ pipeline {
 		    docker push ${DockerHubUsername}/achat '''
             }
         }*/
-		stage('GIT ') {
-            steps {
-
-            	echo 'Pulliing ...';
-                git branch: 'abdessalem', credentialsId: '47d8419e-8cc7-442a-954a-c5590c279e70', url: 'https://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@github.com/abdessalembenchrifa/FrontEndGladOps.git';
-            }
-        }
 		stage('Docker Image Build ') {
 		    steps {
-			    sh 'docker build -t ${DockerHubUsername}/achatfront .'
+			    sh '''cd crud-tuto-front
+			    docker build -t ${DockerHubUsername}/achatfront .'''
 		    }
 		}
 		stage('Docker Image Push ') {

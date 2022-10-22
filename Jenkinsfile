@@ -123,6 +123,7 @@ pipeline {
 		    docker push ${DockerHubUsername}/achatfront '''
             }
 	}
+	}
 	post {
     	always {
     		step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdeslem.bc@gmail.com', sendToIndividuals: true])

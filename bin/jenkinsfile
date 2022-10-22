@@ -4,11 +4,7 @@ pipeline {
     	maven 'M2_HOME'
     }
     stages {
-        stage('Show date') {
-            steps {
-                sh """date"""
-            }
-        }
+       
         stage('Checkout GIT ') {
             steps {
                 echo 'Pulliing ...';
@@ -31,7 +27,29 @@ pipeline {
 		    sh """mvn -version"""
 	        }
 	    }
+
         
+
+	
+        stage("NEXUS") {
+        	steps {
+		 sh 'mvn clean -DskipTests deploy'
+              }
+        }
+       
+	stage("TEST JUNIT"){
+		steps{
+		 sh'mvn test -DskipTests '
+		}
+		
+	}
+ stage("build & SonarQube analysis") {
+            	    steps {
+              withSonarQubeEnv('SonarServer') {
+                    sh 'mvn clean -DskipTests package sonar:sonar'
+              }
+            }
+          }
         
     }
 }

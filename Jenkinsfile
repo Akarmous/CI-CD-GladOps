@@ -17,7 +17,7 @@ pipeline {
 			    	subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
 		    	}
 	    	}
-        }*/
+        }
         stage('GIT ') {
             steps {
 				echo "\033[34m*********Stage GIT Started*********\033[0m";
@@ -25,7 +25,7 @@ pipeline {
                 git branch: 'abdessalem', credentialsId: '47d8419e-8cc7-442a-954a-c5590c279e70', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git';
 				echo "\033[42m\033[97m*********GIT pulling finished with SUCCESS *********\033[0m"
             }
-        }
+        }*/
 		stage('BUILD') {
 			steps {
 				script {
@@ -44,7 +44,7 @@ pipeline {
 				}
 			}
 		}
-		stage("SonarQube") {
+		/*stage("SonarQube") {
     		steps {
 				echo "\033[34m*********Stage SonarQube Started*********\033[0m";
 	        	withSonarQubeEnv('My SonarQube Server') {
@@ -94,7 +94,7 @@ pipeline {
 				}          	
 			}
     	}
-		stage('Docker Image Build ') {
+		*/stage('Docker Image Build ') {
 		    steps {
 			    sh 'docker build -t ${DockerHubUsername}/achat'
 		    }

@@ -21,7 +21,7 @@ pipeline {
             	}
 
 
-	        stage('Testing maven') {
+	      /*  stage('Testing maven') {
 		        steps {
 		        sh """mvn -version"""
 	                   }
@@ -49,7 +49,7 @@ pipeline {
         	    steps {
 		        sh 'mvn clean deploy -DskipTests'
                       }
-                }
+                }*/
 
              stage("DockerBuild") {
                 steps {

@@ -12,7 +12,7 @@ pipeline {
 		            git branch: 'ALA', credentialsId: 'test-jenkins-github', url: 'https://github.com/Akarmous/CI-CD-GladOps.git';
                         }
                  }
-
+/*
 
 	        stage('Build') {
       		    steps {
@@ -21,7 +21,7 @@ pipeline {
             	}
 
 
-	      /*  stage('Testing maven') {
+	        stage('Testing maven') {
 		        steps {
 		        sh """mvn -version"""
 	                   }
@@ -49,11 +49,12 @@ pipeline {
         	    steps {
 		        sh 'mvn clean deploy -DskipTests'
                       }
-                }*/
-
+                }
+*/
              stage("DockerBuild") {
                 steps {
-                sh 'docker build -t alakrms/achat .'
+                sh '''cd crud-tuto-front
+                docker build -t alakrms/achatfront .'''
                 }
                 }
 
@@ -65,9 +66,15 @@ pipeline {
 
               stage("DockerPush") {
                  steps {
-                 sh 'docker push alakrms/achat'
+                 sh 'docker push alakrms/achatfront'
                 }
                 }
+
+
+
+
+
+
 
           }
       }

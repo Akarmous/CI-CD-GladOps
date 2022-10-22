@@ -96,7 +96,7 @@ pipeline {
     	}
 		*/stage('Docker Image Build ') {
 		    steps {
-			    sh 'docker build -t ${DockerHubUsername}/achat'
+			    sh 'docker build -t ${DockerHubUsername}/achat .'
 		    }
 		}
 		stage('Docker Image Push ') {

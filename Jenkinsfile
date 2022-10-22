@@ -17,7 +17,7 @@ pipeline {
 			    	subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
 		    	}
 	    	}
-        }
+        }*/
         stage('GIT ') {
             steps {
 				echo "\033[34m*********Stage GIT Started*********\033[0m";
@@ -95,11 +95,15 @@ pipeline {
 			}
     	}
 	}
-	*/
-	stage('GIT ') {
+		stage('Docker Image Build ') {
+		    steps {
+			    sh 'docker built -t ${DockerHubUsername}/achat'
+		    }
+		}
+		stage('Docker Image Push ') {
             steps {
-		    echo "${DockerHubPassword} ${DockerHubUsername}";
-            	
+		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
+		    docker push ${DockerHubUsername}/achat '''
             }
         }
 	}

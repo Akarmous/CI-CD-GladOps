@@ -38,7 +38,7 @@ pipeline {
             steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           
-           sh 'sudo docker build -t preyz/ciproject:""$GIT_COMMIT"" .'
+           sh 'docker build -t preyz/ciproject:""$GIT_COMMIT"" .'
            sh 'docker push preyz/ciproject:""$GIT_COMMIT""'
          }
        }

@@ -28,13 +28,6 @@ pipeline {
 		    sh """mvn -version"""
 	        }
 	    }
-       stage("build & SonarQube analysis") {
-            steps {
-              withSonarQubeEnv('SonarServer') {
-                    sh 'mvn clean -DskipTests package sonar:sonar'
-              }
-            }
-          }
 	
        
 	stage("TEST JUNIT"){

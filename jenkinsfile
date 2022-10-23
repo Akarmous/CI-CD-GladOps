@@ -49,11 +49,12 @@ pipeline {
 		}
 		stage('Docker Image Push ') {
             steps {
-		    sh ''' docker login -u 181jft3341 -p 181jft3341 
-		    docker push 181jft3341/achat1 '''
+            script {
+		    sh 'docker login -u 181jft3341 -p 181jft3341' 
+		    sh 'docker push backapp/achat'
 		    }
 		    }
-   
+   	}
     }
     
 }

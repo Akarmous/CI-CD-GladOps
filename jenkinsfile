@@ -48,3 +48,4 @@ pipeline {
 		    docker push 181jft3341/achat1 '''
     }
 }
+}

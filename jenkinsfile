@@ -42,12 +42,12 @@ pipeline {
   
       stage('Docker Image Build ') {
 		    steps {
-			    sh 'docker build -t 181jft3341/achat1 .'
+			    sh 'sudo docker build -t 181jft3341/achat1 .'
 		    }
 		}
 		stage('Docker Image Push ') {
             steps {
-		    sh '''docker login -u 181jft3341 -p 181jft3341 
+		    sh '''sudo docker login -u 181jft3341 -p 181jft3341 
 		    docker push 181jft3341/achat1 '''
 		    }
 		    }

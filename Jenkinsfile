@@ -23,7 +23,7 @@ pipeline {
     	}
 	   
 	    
-        stage('SonarQube quality tests') {
+      /*  stage('SonarQube quality tests') {
 		    steps {
 		    sh "mvn sonar:sonar -Dsonar.projectKey=jenkins-ahmed -Dsonar.host.url=http://192.168.1.18:9000 -Dsonar.login=c3c260fec661be0c76af7f2bbc2e029ccab74278"
 	        }
@@ -32,7 +32,17 @@ pipeline {
 			steps {
 				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 			}
-		}
+		} */
+	    
+        stage('Docker Build and Push') {
+            steps {
+         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+          
+           sh 'sudo docker build -t preyz/ciproject:""$GIT_COMMIT"" .'
+           sh 'docker push preyz/ciproject:""$GIT_COMMIT""'
+         }
+       }
+     }
 	   
 	           
     }

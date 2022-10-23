@@ -37,23 +37,14 @@ pipeline {
 		
 	}
 
-       stage("DockerBuild") {
-                steps {
-                sh '''cd crud-tuto-front
-                docker build -t 181jft3341/achat1 .'''
-                }
-                }
-
-             stage("DockerLogin") {
-                steps {
-                sh 'docker login --username 181jft3341 --password 181jft3341'
-                }
-                }
-
-              stage("DockerPush") {
-                 steps {
-                 sh 'docker push 181jft3341/achat1 '
-                }
-                }  
+      stage('Docker Image Build ') {
+		    steps {
+			    sh 'docker build -t ${DockerHubUsername}/achat1 .'
+		    }
+		}
+		stage('Docker Image Push ') {
+            steps {
+		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
+		    docker push ${DockerHubUsername}/achat1 '''
     }
 }

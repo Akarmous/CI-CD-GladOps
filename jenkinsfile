@@ -42,7 +42,7 @@ pipeline {
   
       stage('Docker Image Build ') {
 		    steps {
-			    bat "docker build -t='181jft3341/achat1' ."
+			    sh "docker build -t='181jft3341/achat1' ."
 		    }
 		}
 		stage('Docker Image Push ') {

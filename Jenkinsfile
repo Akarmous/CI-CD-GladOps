@@ -57,7 +57,7 @@ pipeline {
              stage("DockerBuild") {
                 steps {
                 sh '''
-                docker build -t alakrms/achat1 .'''
+                docker build -t alakrms/achat .'''
                 }
                 }
 
@@ -69,7 +69,7 @@ pipeline {
 
               stage("DockerPush") {
                  steps {
-                 sh 'docker push alakrms/achat1'
+                 sh 'docker push alakrms/achat'
                 }
                 }
 

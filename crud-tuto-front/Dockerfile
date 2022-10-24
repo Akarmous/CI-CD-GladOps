@@ -5,7 +5,7 @@ RUN npm install
 COPY . /app/
 RUN npm run build --prod
 FROM nginx:alpine
-COPY --from=build /app/dist/crud-tuto-front /usr/share/nginx/html
+COPY --from=build /app/dist/crudtuto-Front /usr/share/nginx/html
 
 
 

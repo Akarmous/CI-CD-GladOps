@@ -23,7 +23,7 @@ services:
     build:
       context: .
     container_name: ci-spring
-    image: wabes/achatbackend
+    image: wabes/achatbackend:latest
     ports:
       - "8089:8089"
     networks:

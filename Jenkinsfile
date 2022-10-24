@@ -38,11 +38,16 @@ pipeline {
             steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           
-           sh 'docker build -t preyz/ciproject:""$GIT_COMMIT"" .'
-           sh 'docker push preyz/ciproject:""$GIT_COMMIT""'
+           sh 'docker build -t preyz/ciproject:latest .'
+           sh 'docker push preyz/ciproject:latest'
          }
        }
      }
+	    stage('Docker compose') {
+			steps {
+				sh'docker-compose up'
+			}
+		}
 	   
 	           
     }

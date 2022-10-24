@@ -1,27 +1,37 @@
 version: "3"
 services:
-  mysqldb:
+  ci-db:
+    container_name: ci-db
     image: mysql:8.0
-    ports:
-      - "3306:3306"
-    volumes:
-      - /db:/var/lib/mysql
+    networks:
+      - ci-network
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
       - MYSQL_PASSWORD=root
       - MYSQL_DATABASE=achatdb
-      
-  backapp:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - dbvol:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+
+  ci-app:
+    build:
+      context: .
+    container_name: ci-spring
     image: wabes/achatbackend:latest
     ports:
       - "8089:8089"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&useSSL=false
-      SPRING_DATASOURCE_USERNAME: "root"
-      SPRING_DATASOURCE_PASSWORD: "root"
-      MYSQL_PORT: 3306
-    restart: always
+    networks:
+      - ci-network
     depends_on:
-      - mysqldb
+      - ci-db
+    environment:
+      - MYSQL_HOST=ci-db
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=achatdb
+      - MYSQL_PORT=3306
  
    

@@ -7,8 +7,8 @@ services:
     networks:
       - ahmedci-network
     environment:
-      - MYSQL_USER=new_user
-      - MYSQL_PASSWORD=password
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
       - MYSQL_DATABASE=achatdb
       - MYSQL_ROOT_PASSWORD=root
     volumes:

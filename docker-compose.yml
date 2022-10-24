@@ -20,6 +20,7 @@ services:
 
   spring-service:
     image: alakrms/achat
+    restart: unless-stopped
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/achatdb
       SPRING_DATASOURCE_USERNAME: root

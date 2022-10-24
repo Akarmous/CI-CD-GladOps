@@ -48,13 +48,13 @@ pipeline {
 		
 	}*/
 		
-     /* stage('Docker BUILD backend') {
+     /stage('Docker BUILD backend') {
       		steps {
-        		sh '''docker build -t wabes/achat .
+        		sh '''docker build -t wabes/achatbackend:latest .
 			docker login --username wabes --password 5Arctic-%2022
-			docker push wabes/achat'''
+			docker push wabes/achatbackend:latest'''
       		}
-    	}*/
+    	}
 		/*stage('Docker BUILD front') {
       		steps {
         		sh '''cd crud-tuto-front

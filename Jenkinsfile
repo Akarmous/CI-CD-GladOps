@@ -23,7 +23,8 @@ pipeline {
 
 	        stage('Testing maven') {
 		        steps {
-		        sh """mvn -version"""
+		        sh """mvn -version
+		              mvn clean package """
 	                   }
 	            }
 

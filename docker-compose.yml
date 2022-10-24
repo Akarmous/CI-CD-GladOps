@@ -21,7 +21,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - /db:/var/lib/mysql
+      - db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_PASSWORD=root

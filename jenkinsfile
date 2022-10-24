@@ -39,7 +39,7 @@ pipeline {
 		
 	}
 
-  
+  /*
       stage('Docker Image Build ') {
 		    steps {
 		      script{
@@ -54,7 +54,25 @@ pipeline {
 		    sh 'docker push 181jft3341/achat'
 		    }
 		    }
-   	}
+   	}*/
+   	 stage("DockerBuild") {
+                steps {
+                sh '''cd crud-tuto-front
+                sh 'docker build -t 181jft3341/achatfront .'
+                }
+                }
+
+             stage("DockerLogin") {
+                steps {
+                sh 'docker login -u 181jft3341 -p 181JFT3341' 
+                }
+                }
+
+              stage("DockerPush") {
+                 steps {
+                 sh 'docker push 181jft3341/achatfront'
+                }
+                }
     }
     
 }

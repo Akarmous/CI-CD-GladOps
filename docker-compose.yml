@@ -1,5 +1,8 @@
-version: "3"
+version: '3.7'
 services:
+
+
+      
   ci-db:
     container_name: ci-db
     image: mysql:8.0
@@ -20,7 +23,7 @@ services:
     build:
       context: .
     container_name: ci-spring
-    image: wabes/achatbackend:latest
+    image: wabes/achatbackend
     ports:
       - "8089:8089"
     networks:
@@ -33,5 +36,12 @@ services:
       - MYSQL_PASSWORD=root
       - MYSQL_DATABASE=achatdb
       - MYSQL_PORT=3306
- 
+      
+
+networks:
+  ci-network:
+    name: ci-network
+
+volumes:
+  dbvol:
    

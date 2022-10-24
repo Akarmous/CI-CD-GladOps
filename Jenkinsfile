@@ -51,11 +51,6 @@ pipeline {
                       }
                 }
 */
-             stage("Docker-Compose") {
-               steps {
-               sh 'docker-compose up'
-              }
-              }
 
              stage("DockerBuild") {
                 steps {
@@ -73,6 +68,11 @@ pipeline {
               stage("DockerPush") {
                  steps {
                  sh 'docker push alakrms/achatfront'
+                }
+                }
+              stage("Docker-Compose") {
+                 steps {
+                 sh 'docker-compose up'
                 }
                 }
 

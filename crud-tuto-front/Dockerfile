@@ -1,4 +1,4 @@
-FROM node:12.18-alpine 
+FROM node:alpine 
 WORKDIR /app
 
 RUN npm install

@@ -1,11 +1,11 @@
 FROM node:12.18-alpine 
 WORKDIR /app
-COPY . .
+
 RUN npm install
+COPY . /app/
 RUN npm run build --prod
 FROM nginx:alpine
-
-EXPOSE 4200
+COPY --from=build /app/dist/crud-tuto-front /usr/share/nginx/html
 
 
 

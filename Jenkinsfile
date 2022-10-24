@@ -12,7 +12,7 @@ pipeline {
 		            git branch: 'ALA', credentialsId: 'test-jenkins-github', url: 'https://github.com/Akarmous/CI-CD-GladOps.git';
                         }
                  }
-/*
+
 
 	        stage('Build') {
       		    steps {
@@ -27,7 +27,7 @@ pipeline {
 	                   }
 	            }
 
-
+/*
 	        stage('SonarQube analysis') {
 		        steps {
 		        withSonarQubeEnv(installationName: 'sq1') {
@@ -50,8 +50,8 @@ pipeline {
 		        sh 'mvn clean deploy -DskipTests'
                       }
                 }
-*/
 
+*/
              /*stage("DockerBuild") {
                 steps {
                 sh '''cd crud-tuto-front

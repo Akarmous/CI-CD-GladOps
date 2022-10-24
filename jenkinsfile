@@ -55,7 +55,7 @@ pipeline {
 		    }
 		    }
    	}*/
-   	 stage("DockerBuild") {
+  /* 	 stage("DockerBuild") {
                 steps {
                 sh '''cd crud-tuto-front
                  docker build -t 181jft3341/achatfront .'''
@@ -72,7 +72,16 @@ pipeline {
                  steps {
                  sh 'docker push 181jft3341/achatfront'
                 }
+                }*/
+                stage("Docker-Compose") {
+                 steps {
+                 sh 'docker-compose up'
                 }
+                }
+                
+                
+                
+                
     }
     
 }

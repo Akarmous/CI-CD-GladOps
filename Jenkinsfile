@@ -48,7 +48,7 @@ pipeline {
 		
 	}
 		
-	stage('Dockerfile') {
+	stage('Docker BUILD') {
       		steps {
         		sh '''docker build -t wabes/achat .
 			docker login --username wabes --password 5Arctic-%2022
@@ -60,6 +60,7 @@ pipeline {
         		sh '''docker run -t wabes/achat .'''
       		}
     	}*/
+		
              
     }
 }

@@ -29,7 +29,7 @@ pipeline {
 	        }
 	    }
 	    
-        stage("SonarQube Analysis") {
+       /* stage("SonarQube Analysis") {
             steps {
               withSonarQubeEnv('SonarQube') {
                 sh 'mvn clean -DskipTests package sonar:sonar'
@@ -46,7 +46,7 @@ pipeline {
 		 sh'mvn test'
 		}
 		
-	}
+	}*/
 		
 	/*stage('Docker BUILD') {
       		steps {

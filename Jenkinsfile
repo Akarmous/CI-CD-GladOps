@@ -13,6 +13,12 @@ pipeline {
                         }
                  }
 
+                 stage("clone the application"){
+                 steps{
+                    git 'https://github.com/Akarmous/CI-CD-GladOps.git'
+                  }
+                         }
+
 
 	        stage('Build') {
       		    steps {

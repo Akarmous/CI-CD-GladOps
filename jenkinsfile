@@ -58,7 +58,7 @@ pipeline {
    	 stage("DockerBuild") {
                 steps {
                 sh '''cd crud-tuto-front
-                sh 'docker build -t 181jft3341/achatfront .'
+                 docker build -t 181jft3341/achatfront .'''
                 }
                 }
 

@@ -1,30 +1,27 @@
-version: "3.3"
+version: "3"
+
 
 services:
-  mysqldb:
-    image: mysql:8
-    container_name: mysqldbco
-    restart: unless-stopped
-
-    environment:
-      MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: 'achatdb'
-      MYSQL_USER: 'devops'
-      MYSQL_PASSWORD: 'devops'
-      MYSQL_ROOT_HOST: '%'
-      MYSQL_TCP_PORT: '3306:3306'
-
-    volumes:
-      - db:/var/lib/mysql
-
-  spring-service:
-    image: alakrms/achat
-    restart: unless-stopped
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://192.168.1.126:3306/achatdb
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+  backapp:
+    image: alakrms/achat:latest
     ports:
       - "8089:8089"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "devops"
+      MYSQL_PORT: 3306
+    restart: always
     depends_on:
       - mysqldb
+
+  mysqldb:
+    image: mysql:8.0
+    ports:
+      - "3307:3306"
+    volumes:
+      - /db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=devops

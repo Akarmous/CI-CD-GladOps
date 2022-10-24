@@ -7,8 +7,8 @@ services:
     ports:
       - "8089:8089"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&useSSL=false
-      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_URL: jdbc:mysql://192.168.1.126:3306/achatdb?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: "devops"
       SPRING_DATASOURCE_PASSWORD: "devops"
       MYSQL_PORT: 3307
     restart: always
@@ -23,5 +23,5 @@ services:
       - /db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=root
+      - MYSQL_PASSWORD=devops
       - MYSQL_DATABASE=devops

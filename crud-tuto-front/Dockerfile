@@ -1,4 +1,4 @@
-FROM node:latest as build
+FROM node:latest as node
 
 # Set the working directory
 WORKDIR /app

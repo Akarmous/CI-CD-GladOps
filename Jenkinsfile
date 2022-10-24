@@ -68,7 +68,7 @@ pipeline {
         		sh '''docker run -t wabes/achatfront .'''
       		}
     	}*/
-		stage('Docker Build and Push') {
+		/*stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            
@@ -76,7 +76,7 @@ pipeline {
            sh 'docker push wabes/achatbackend:latest'
          }
        }
-     }
+     }*/
 		
 		stage('Docker COMPOSE') {
       		steps {

@@ -52,6 +52,12 @@ pipeline {
                 }
 */
              stage("DockerBuild") {
+               steps {
+               sh 'docker-compose up -d'
+                             }
+                             }
+
+             stage("DockerBuild") {
                 steps {
                 sh '''cd crud-tuto-front
                 docker build -t alakrms/achatfront .'''

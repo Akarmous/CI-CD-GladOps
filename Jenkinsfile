@@ -54,10 +54,10 @@ pipeline {
                 }
 
 */
-             /*stage("DockerBuild") {
+             stage("DockerBuild") {
                 steps {
-                sh '''cd crud-tuto-front
-                docker build -t alakrms/achatfront .'''
+                sh '''
+                docker build -t alakrms/achat1 .'''
                 }
                 }
 
@@ -69,9 +69,9 @@ pipeline {
 
               stage("DockerPush") {
                  steps {
-                 sh 'docker push alakrms/achatfront'
+                 sh 'docker push alakrms/achat1'
                 }
-                }*/
+                }
 
               stage("Docker-Compose") {
                  steps {

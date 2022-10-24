@@ -13,7 +13,7 @@ pipeline {
                         }
                  }
 
-
+/*
 
 	        stage('Build') {
       		    steps {
@@ -28,7 +28,7 @@ pipeline {
 		              mvn clean package """
 	                   }
 	            }
-
+*/
 /*
 	        stage('SonarQube analysis') {
 		        steps {
@@ -73,7 +73,7 @@ pipeline {
                 }
                 }
 
-              stage("Docker-Compose") {
+              stage("DockerCompose") {
                  steps {
                  sh 'docker-compose up'
                 }

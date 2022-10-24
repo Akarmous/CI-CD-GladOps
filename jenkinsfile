@@ -43,7 +43,7 @@ pipeline {
       stage('Docker Image Build ') {
 		    steps {
 		      script{
-			    sh 'docker build -t backapp/achat .'
+			    sh 'docker build -t 181jft3341/achat .'
 		    }
 		}
 		}
@@ -51,7 +51,7 @@ pipeline {
             steps {
             script {
 		    sh 'docker login -u 181jft3341 -p 181JFT3341' 
-		    sh 'docker push backapp/achat'
+		    sh 'docker push 181jft3341/achat'
 		    }
 		    }
    	}

@@ -12,7 +12,7 @@ pipeline {
 	    }
         }
 	    
-	  stage('COMPILE') {
+	 /* stage('COMPILE') {
       		steps {
         		sh 'mvn compile'
       		}
@@ -27,7 +27,7 @@ pipeline {
 		    steps {
 		    sh """mvn -version"""
 	        }
-	    }
+	    } */
 	    
        /* stage("SonarQube Analysis") {
             steps {

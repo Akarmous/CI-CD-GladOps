@@ -1,14 +1,22 @@
 version: "3"
-
-
 services:
+  mysqldb:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - /db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=achatdb
+
   backapp:
     image: alakrms/achat:latest
     ports:
       - "8089:8089"
     environment:
-      driverClassName: com.mysql.jdbc.Driver
-      SPRING_DATASOURCE_URL: jdbc:mysql://127.0.0.1:3306/achatdb?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: "root"
       SPRING_DATASOURCE_PASSWORD: "root"
       MYSQL_PORT: 3306
@@ -16,13 +24,6 @@ services:
     depends_on:
       - mysqldb
 
-  mysqldb:
-    image: mysql:8.0
-    ports:
-      - "3307:3306"
-    volumes:
-      - db:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_DATABASE=achatdb
+
+
+

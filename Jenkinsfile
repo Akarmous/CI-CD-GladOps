@@ -78,6 +78,12 @@ pipeline {
        }
      }
 		
+		/*stage('Docker COMPOSE') {
+      		steps {
+        		sh 'docker-compose up .'
+      		}
+    	}*/
+		
              
     }
 }

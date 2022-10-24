@@ -1,16 +1,14 @@
 version: '3.7'
 services:
-
-
-      
+ 
   ci-db:
     container_name: ci-db
     image: mysql:8.0
     networks:
       - ci-network
     environment:
-      - MYSQL_USER=new_user
-      - MYSQL_PASSWORD=password
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
       - MYSQL_DATABASE=achatdb
       - MYSQL_ROOT_PASSWORD=root
     volumes:

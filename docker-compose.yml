@@ -12,8 +12,7 @@ services:
       MYSQL_USER: 'devops'
       MYSQL_PASSWORD: 'devops'
       MYSQL_ROOT_HOST: '%'
-    ports:
-      - 3306:3306
+      MYSQL_TCP_PORT: '3306'
 
     healthcheck:
       test: "/usr/bin/mysql --user=devops --password=devops --execute \"SHOW DATABASES;\""

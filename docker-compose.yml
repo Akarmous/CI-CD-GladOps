@@ -30,8 +30,8 @@ services:
       - ahmedci-db
     environment:
       - MYSQL_HOST=ahmedci-db
-      - MYSQL_USERNAME=new_user
-      - MYSQL_PASSWORD=password
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
       - MYSQL_DATABASE=achatdb
       - MYSQL_PORT=3306
       

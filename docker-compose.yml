@@ -1,5 +1,16 @@
 version: "3"
 services:
+  mysqldb:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - /db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=achatdb
+      
   backapp:
     image: wabes/achatbackend:latest
     ports:
@@ -13,13 +24,4 @@ services:
     depends_on:
       - mysqldb
  
-  mysqldb:
-    image: mysql:8.0
-    ports:
-      - "3306:3306"
-    volumes:
-      - /db:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_DATABASE=achatdb 
+   

@@ -1,1 +1,43 @@
+version: '3.7'
+services:
+      
+  ahmedci-db:
+    container_name: ahmedci-db
+    image: mysql:8.0
+    networks:
+      - ahmedci-network
+    environment:
+      - MYSQL_USER=new_user
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=achatdb
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - dbvol:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
 
+  ahmedci-app:
+    build:
+      context: .
+    container_name: ahmedci-spring
+    image: preyz/ciproject:latest
+    ports:
+      - "8089:8089"
+    networks:
+      - ahmedci-network
+    depends_on:
+      - ahmedci-db
+    environment:
+      - MYSQL_HOST=ahmedci-db
+      - MYSQL_USERNAME=new_user
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=achatdb
+      - MYSQL_PORT=3306
+      
+networks:
+  ahmedci-network:
+    name: ahmedci-network
+
+volumes:
+  dbvol:

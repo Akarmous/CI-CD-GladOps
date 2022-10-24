@@ -51,11 +51,11 @@ pipeline {
                       }
                 }
 */
-             stage("DockerBuild") {
+             stage("Docker-Compose") {
                steps {
                sh 'docker-compose up -d'
-                             }
-                             }
+              }
+              }
 
              stage("DockerBuild") {
                 steps {

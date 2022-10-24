@@ -22,5 +22,5 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=node /app/dist/crudtuto-Front /usr/share/nginx/html
+COPY --from=node /app/dist/crudtuto-front /usr/share/nginx/html
 

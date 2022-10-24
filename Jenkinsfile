@@ -2,10 +2,10 @@ pipeline {
 	agent any
 	tools {
 		maven 'MAVEN_HOME'
-		}
+	}
 	options {
-        ansiColor('xterm')
-    }
+        	ansiColor('xterm')
+	}
 	stages {
 		/*stage('Show date') {
             steps {
@@ -17,7 +17,7 @@ pipeline {
 			    	subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
 		    	}
 	    	}
-        }*/
+        }
         stage('GIT ') {
             steps {
 				echo "\033[34m*********Stage GIT Started*********\033[0m";
@@ -94,6 +94,29 @@ pipeline {
 				}          	
 			}
     	}
+		stage('Docker Image Build ') {
+		    steps {
+			    sh 'docker build -t ${DockerHubUsername}/achat .'
+		    }
+		}
+		stage('Docker Image Push ') {
+            steps {
+		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
+		    docker push ${DockerHubUsername}/achat '''
+            }
+        }*/
+		stage('Docker Image Build ') {
+		    steps {
+			    sh '''cd crud-tuto-front
+			    docker build -t ${DockerHubUsername}/achatfront .'''
+		    }
+		}
+		stage('Docker Image Push ') {
+            steps {
+		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
+		    docker push ${DockerHubUsername}/achatfront '''
+            }
+	}
 	}
 	post {
     	always {

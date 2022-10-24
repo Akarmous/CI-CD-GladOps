@@ -73,7 +73,7 @@ pipeline {
 
               stage("Docker-Compose") {
                  steps {
-                 sh 'docker-compose stop'
+                 sh 'docker-compose up'
                 }
                 }
 

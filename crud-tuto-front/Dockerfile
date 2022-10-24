@@ -1,7 +1,7 @@
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
-FROM node:latest as build
+FROM node:12.18-alpine as build
 
 # Set the working directory
 WORKDIR /app
@@ -22,7 +22,7 @@ RUN npm run build --prod
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /app/dist/crud-tuto-front /usr/share/nginx/html
+COPY --from=build /app/dist/crudtuto-Front /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80

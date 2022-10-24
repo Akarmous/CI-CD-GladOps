@@ -6,7 +6,7 @@ pipeline {
 
           stages {
 
-                 stage("clone the application"){
+            stage("clone the application"){
                  steps{
                     git 'https://github.com/Akarmous/CI-CD-GladOps.git'
                   }

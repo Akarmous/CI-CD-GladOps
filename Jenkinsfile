@@ -17,7 +17,7 @@ pipeline {
 			    	subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
 		    	}
 	    	}
-        }
+        }*/
         stage('GIT ') {
             steps {
 				echo "\033[34m*********Stage GIT Started*********\033[0m";
@@ -44,7 +44,7 @@ pipeline {
 				}
 			}
 		}
-		stage("SonarQube") {
+		/*stage("SonarQube") {
     		steps {
 				echo "\033[34m*********Stage SonarQube Started*********\033[0m";
 	        	withSonarQubeEnv('My SonarQube Server') {
@@ -104,7 +104,7 @@ pipeline {
 		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
 		    docker push ${DockerHubUsername}/achat '''
             }
-        }*/
+        }
 		stage('Docker Image Build ') {
 		    steps {
 			    sh '''cd crud-tuto-front
@@ -116,7 +116,12 @@ pipeline {
 		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
 		    docker push ${DockerHubUsername}/achatfront '''
             }
-	}
+	}*/
+	stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up'
+                }
+                }
 	}
 	post {
     	always {

@@ -79,6 +79,11 @@ pipeline {
                 }
                 }
 
+              stage("DockerComposeDown") {
+                 steps {
+                 sh 'docker-compose down'
+                              }
+                              }
 
 
 

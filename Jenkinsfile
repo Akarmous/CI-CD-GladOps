@@ -56,8 +56,7 @@ pipeline {
     	}
 		stage('Image') {
 		    steps {
-			    sh '''sudo chmod 666 /var/run/docker.sock
-			    docker build -t ${DockerHubUsername}/achat .'''
+			    sh 'docker build -t ${DockerHubUsername}/achat .'
 		    }
 		}
 		stage('DockerHub ') {

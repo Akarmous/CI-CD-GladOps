@@ -3,9 +3,13 @@ version: "3.3"
 services:
 
   angular:
+  container_name: angularcli
   image: alakrms/achatfront
   ports:
     - "4200:80"
+  volumes:
+  db:
+
 
   mysqldb:
     image: mysql:5.7

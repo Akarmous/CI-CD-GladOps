@@ -16,7 +16,7 @@ services:
       - 3306:3306
     volumes:
       - db:/var/lib/mysql
-  app:
+  achatback:
     depends_on:
       - mysqldb
     image:  abdessalembench/achat

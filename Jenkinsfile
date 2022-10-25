@@ -48,13 +48,13 @@ pipeline {
 		
 	}*/
 		
-    stage('Docker BUILD backend') {
+  /*  stage('Docker BUILD backend') {
       		steps {
         		sh '''docker build -t wabes/achatbackend:latest .
 			docker login --username wabes --password 5Arctic-%2022
 			docker push wabes/achatbackend:latest'''
       		}
-    	} 
+    	} */
 		/*stage('Docker BUILD front') {
       		steps {
         		sh '''cd crud-tuto-front
@@ -68,7 +68,7 @@ pipeline {
         		sh '''docker run -t wabes/achatfront .'''
       		}
     	}*/
-		/*stage('Docker Build and Push') {
+		stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            
@@ -76,7 +76,7 @@ pipeline {
            sh 'docker push wabes/achatbackend:latest'
          }
        }
-     }*/
+     }
 		
 		stage('Docker COMPOSE') {
       		steps {

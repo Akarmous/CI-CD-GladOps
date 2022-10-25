@@ -54,12 +54,13 @@ pipeline {
 				}
 			}
     	}
-		stage('Docker Image Build ') {
+		stage('Image') {
 		    steps {
-			    sh 'docker build -t ${DockerHubUsername}/achat .'
+			    sh '''sudo chmod 666 /var/run/docker.sock
+			    docker build -t ${DockerHubUsername}/achat .'''
 		    }
 		}
-		stage('Docker Image Push ') {
+		stage('DockerHub ') {
             steps {
 		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
 		    docker push ${DockerHubUsername}/achat '''

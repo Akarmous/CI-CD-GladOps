@@ -7,15 +7,6 @@ pipeline {
           stages {
 
 
-            stage('preparation : start sonar, nexus') {
-                 steps{
-                      sh "docker start 3d1"
-                      sh "docker start 3e0"
-
-                        }
-                    }
-
-
 	        stage('Checkout GIT ') {
                  steps {
                     echo 'Pulliing ...';

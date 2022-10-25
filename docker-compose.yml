@@ -37,5 +37,12 @@ services:
     stdin_open: true
     tty: true
 
+  nexus:
+    image: sonatype/nexus3
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./nexusv:/Nexus-data
+
 volumes:
   db:

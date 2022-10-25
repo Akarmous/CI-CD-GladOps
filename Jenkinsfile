@@ -6,12 +6,28 @@ pipeline {
 
           stages {
 
+
+            stage('preparation : start sonar, nexus') {
+                 steps{
+                      sh "docker start 3d1"
+                      sh "docker start 3e0"
+
+                        }
+                    }
+
+
 	        stage('Checkout GIT ') {
                  steps {
                     echo 'Pulliing ...';
 		            git branch: 'ALA', credentialsId: 'test-jenkins-github', url: 'https://github.com/Akarmous/CI-CD-GladOps.git';
                         }
                  }
+
+            stage('Cleaning the project') {
+                 steps{
+                    sh "mvn -B -DskipTests clean "
+                    }
+                    }
 
 /*
 
@@ -57,7 +73,7 @@ pipeline {
             /* stage("DockerBuild") {
                 steps {
                 sh '''
-                docker build -t alakrms/achat .'''
+                docker build -t alakrms/achat:latest .'''
                 }
                 }
 
@@ -69,13 +85,13 @@ pipeline {
 
               stage("DockerPush") {
                  steps {
-                 sh 'docker push alakrms/achat'
+                 sh 'docker push alakrms/achat:latest'
                 }
                 }
 */
               stage("DockerCompose") {
                  steps {
-                 sh 'docker-compose up'
+                 sh 'docker-compose up -d'
                 }
                 }
 

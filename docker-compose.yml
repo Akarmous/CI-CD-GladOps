@@ -15,7 +15,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - achatdb:/var/lib/mysql
+      - db:/var/lib/mysql
   app:
     depends_on:
       - mysqldb
@@ -38,4 +38,4 @@ services:
     tty: true
 
 volumes:
-  achatdb:
+  db:

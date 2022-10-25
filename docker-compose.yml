@@ -1,25 +1,29 @@
 version: "3"
 services:
-  backapp:
-    image: 181jft3341/achat:latest
-    ports:
-      - "8089:8089"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&useSSL=false
-      SPRING_DATASOURCE_USERNAME: "root"
-      SPRING_DATASOURCE_PASSWORD: "ranim"
-      MYSQL_PORT: 3306
-    restart: always
-    depends_on:
-      - mysqldb
- 
   mysqldb:
-    image: mysql:8.0
+    container_name: mysqldb
+    image: mysql/mysql-server:8.0
+    restart: unless-stopped
     ports:
-      - "3307:3306"
-    volumes:
-      - /db:/var/lib/mysql
+     - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=ranim
-      - MYSQL_DATABASE=achatdb  
+     - MYSQL_ROOT_PASSWORD=1234
+     - MYSQL_DATABASE=achatdb
+     - MYSQL_USER=ranim
+     - MYSQL_PASSWORD=1234
+    volumes:
+     - achatdb:/var/lib/mysql
+
+  spring_app:
+    image: 181jft3341/achat:latest
+    container_name: achatspring
+    restart: on-failure
+    environment:
+     - spring.datasource.url=jdbc:mysql://mysqldb:3306/achatdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    ports:
+     - 8089:8089
+    depends_on:
+     - mysqldb
+
+volumes:
+  achatdb:

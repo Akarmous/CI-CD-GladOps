@@ -16,7 +16,6 @@ pipeline {
 					echo "\033[42m\033[97m*********GIT pulling finished with SUCCESS *********\033[0m"
 		    }
 		}
-
 		stage('BUILD') {
 			steps {
 				script {
@@ -65,7 +64,7 @@ pipeline {
 		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
 		    docker push ${DockerHubUsername}/achat '''
             }
-        }		
+        }
 		stage("DockerCompose") {
 			 steps {
 			 sh 'docker-compose up -d'

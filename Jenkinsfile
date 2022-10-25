@@ -28,8 +28,6 @@ pipeline {
 						echo "\033[31m*********BUILD finished with FAILURE *********\033[0m" ;
 						currentBuild.result = 'FAILURE'
 						throw any
-					} finally {
-						step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdeslem.bc@gmail.com', sendToIndividuals: true])
 					}
 				}
 			}
@@ -44,12 +42,6 @@ pipeline {
 					} catch(any) {
 						echo "\033[31m*********NEXUS deployement finished with FAILURE *********\033[0m" ;
 						throw any
-					} finally{
-						echo "\033[34m*********Mail Sending*********\033[0m";
-						emailext body: """${currentBuild.currentResult}: stage "NEXUS" build n°${env.BUILD_NUMBER}  
-						More info at: ${env.BUILD_URL}""", 
-		    			to: 'abdeslem.bc@gmail.com',
-		    			subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """
 					}
 				}
 			}
@@ -69,11 +61,6 @@ pipeline {
 			 steps {
 			 sh 'docker-compose up -d'
 			}
-		}
-	}
-	post {
-    	always {
-    		step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'abdeslem.bc@gmail.com', sendToIndividuals: true])
 		}
 	}
 }

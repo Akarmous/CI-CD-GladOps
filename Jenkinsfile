@@ -51,15 +51,15 @@ pipeline {
 			    sh 'docker build -t ${DockerHubUsername}/achat .'
 		    }
 		}
-		/*stage('DockerHub ') {
+		stage('DockerHub ') {
             steps {
 		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
 		    docker push ${DockerHubUsername}/achat '''
             }
         }
-		*/stage("DockerCompose") {
+		stage("DockerCompose") {
 			 steps {
-			 sh 'docker-compose up'
+			 sh 'docker-compose up -d'
 			}
 		}
 	}

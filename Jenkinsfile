@@ -5,14 +5,14 @@ pipeline {
     }
     
 	stages {
-	stage('Checkout GIT ') {
+/*	stage('Checkout GIT ') {
             steps {
                 echo 'Pulling ...';
                 git branch: 'Wassim', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            
 	    }
-        }
+        } */
 	    
-	 /* stage('COMPILE') {
+	  stage('COMPILE') {
       		steps {
         		sh 'mvn compile'
       		}
@@ -23,7 +23,7 @@ pipeline {
       		}
     	}
 	    
-        stage('MVN TEST') {
+      /*  stage('MVN TEST') {
 		    steps {
 		    sh """mvn -version"""
 	        }
@@ -48,13 +48,13 @@ pipeline {
 		
 	}*/
 		
-     stage('Docker BUILD backend') {
+  /*  stage('Docker BUILD backend') {
       		steps {
         		sh '''docker build -t wabes/achatbackend:latest .
 			docker login --username wabes --password 5Arctic-%2022
 			docker push wabes/achatbackend:latest'''
       		}
-    	}
+    	} */
 		/*stage('Docker BUILD front') {
       		steps {
         		sh '''cd crud-tuto-front
@@ -68,7 +68,7 @@ pipeline {
         		sh '''docker run -t wabes/achatfront .'''
       		}
     	}*/
-		/*stage('Docker Build and Push') {
+		stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            
@@ -76,7 +76,7 @@ pipeline {
            sh 'docker push wabes/achatbackend:latest'
          }
        }
-     }*/
+     }
 		
 		stage('Docker COMPOSE') {
       		steps {

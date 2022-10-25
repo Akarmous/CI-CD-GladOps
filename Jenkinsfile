@@ -60,7 +60,7 @@ pipeline {
                       }
                 }
 
-/*
+
              stage("DockerBuild") {
                 steps {
                 sh '''
@@ -82,9 +82,9 @@ pipeline {
 
               stage("DockerCompose") {
                  steps {
-                 sh 'docker-compose up -d'
+                 sh 'docker-compose up '
                 }
-                }*/
+                }
 
 
 

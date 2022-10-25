@@ -29,7 +29,7 @@ pipeline {
 	                   }
 	            }
 */
-
+/*
 	        stage('SonarQube analysis') {
 		        steps {
 		        withSonarQubeEnv(installationName: 'sq1') {
@@ -37,7 +37,7 @@ pipeline {
 	                  }
 	                }
 	            }
-/*
+
 
             stage('JUnit/Mockito'){
                 steps {
@@ -46,15 +46,15 @@ pipeline {
                       }
                 }
 
-*/
+
              stage("NEXUS") {
         	    steps {
 		        sh 'mvn clean deploy -DskipTests'
                       }
                 }
+*/
 
-
-             stage("DockerBuild") {
+            /* stage("DockerBuild") {
                 steps {
                 sh '''
                 docker build -t alakrms/achat .'''
@@ -72,16 +72,12 @@ pipeline {
                  sh 'docker push alakrms/achat'
                 }
                 }
-
+*/
               stage("DockerCompose") {
                  steps {
                  sh 'docker-compose up'
                 }
                 }
-
-
-
-
 
 
 

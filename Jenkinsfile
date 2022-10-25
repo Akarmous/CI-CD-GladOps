@@ -29,7 +29,7 @@ pipeline {
 	                   }
 	            }
 */
-/*
+
 	        stage('SonarQube analysis') {
 		        steps {
 		        withSonarQubeEnv(installationName: 'sq1') {
@@ -37,7 +37,7 @@ pipeline {
 	                  }
 	                }
 	            }
-
+/*
 
             stage('JUnit/Mockito'){
                 steps {

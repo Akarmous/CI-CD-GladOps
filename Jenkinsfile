@@ -45,7 +45,7 @@ pipeline {
 	                   }
 	            }
 */
-/*
+
 	        stage('SonarQube analysis') {
 		        steps {
 		        withSonarQubeEnv(installationName: 'sq1') {
@@ -54,7 +54,7 @@ pipeline {
 	                }
 	            }
 
-
+/*
             stage('JUnit/Mockito'){
                 steps {
                 sh 'mvn test'
@@ -69,7 +69,7 @@ pipeline {
                       }
                 }
 
-
+/*
              stage("DockerBuild") {
                 steps {
                 sh '''
@@ -93,7 +93,7 @@ pipeline {
                  steps {
                  sh 'docker-compose up -d'
                 }
-                }
+                }*/
 
 
 

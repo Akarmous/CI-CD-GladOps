@@ -38,4 +38,4 @@ services:
     tty: true
 
 volumes:
-  db:
+  achatdb:

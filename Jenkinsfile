@@ -62,15 +62,15 @@ pipeline {
                       }
                 }
 
-
+*/
              stage("NEXUS") {
         	    steps {
 		        sh 'mvn clean deploy -DskipTests'
                       }
                 }
-*/
 
-            /* stage("DockerBuild") {
+
+             stage("DockerBuild") {
                 steps {
                 sh '''
                 docker build -t alakrms/achat:latest .'''
@@ -88,7 +88,7 @@ pipeline {
                  sh 'docker push alakrms/achat:latest'
                 }
                 }
-*/
+
               stage("DockerCompose") {
                  steps {
                  sh 'docker-compose up -d'

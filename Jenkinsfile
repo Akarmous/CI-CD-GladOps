@@ -26,7 +26,7 @@ pipeline {
 				echo "\033[42m\033[97m*********GIT pulling finished with SUCCESS *********\033[0m"
             }
         }
-		/*stage('BUILD') {
+		stage('BUILD') {
 			steps {
 				script {
 					try {
@@ -44,7 +44,7 @@ pipeline {
 				}
 			}
 		}
-		stage("SonarQube") {
+		/*stage("SonarQube") {
     		steps {
 				echo "\033[34m*********Stage SonarQube Started*********\033[0m";
 	        	withSonarQubeEnv('My SonarQube Server') {

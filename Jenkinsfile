@@ -104,7 +104,7 @@ pipeline {
 		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
 		    docker push ${DockerHubUsername}/achat '''
             }
-        }*/
+        }
 		stage('Docker Image Build ') {
 		    steps {
 			    sh '''cd crud-tuto-front
@@ -116,7 +116,12 @@ pipeline {
 		    sh '''docker login -u ${DockerHubUsername} -p ${DockerHubPassword} 
 		    docker push ${DockerHubUsername}/achatfront '''
             }
-	}
+	}*/
+	stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up'
+                }
+                }
 	}
 	post {
     	always {

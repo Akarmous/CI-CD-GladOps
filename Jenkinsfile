@@ -51,7 +51,7 @@ pipeline {
   /*  stage('Docker BUILD backend') {
       		steps {
         		sh '''docker build -t wabes/achatbackend:latest .
-			docker login --username wabes --password 5Arctic-%2022
+			docker login --username wabes --password 
 			docker push wabes/achatbackend:latest'''
       		}
     	} */
@@ -59,7 +59,7 @@ pipeline {
       		steps {
         		sh '''cd crud-tuto-front
 			docker build -t wabes/achatfront .
-			docker login --username wabes --password 5Arctic-%2022
+			docker login --username wabes --password 
 			docker push wabes/achatfront'''
       		}
     	}*/

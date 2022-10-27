@@ -21,7 +21,7 @@ pipeline {
       		          }
             	}
 
-
+/*
 	        stage('Testing maven') {
 		        steps {
 		        sh """mvn -version
@@ -45,7 +45,7 @@ pipeline {
                 echo """Bravo! tous les tests sont pris en charge"""
                       }
                 }
-
+*/
 
              stage("NEXUS") {
         	    steps {

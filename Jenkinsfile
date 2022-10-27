@@ -29,7 +29,7 @@ pipeline {
 	                   }
 	            }
 
-
+*/
 	        stage('SonarQube analysis') {
 		        steps {
 		        withSonarQubeEnv(installationName: 'sq1') {
@@ -45,7 +45,7 @@ pipeline {
                 echo """Bravo! tous les tests sont pris en charge"""
                       }
                 }
-*/
+
 
              stage("NEXUS") {
         	    steps {

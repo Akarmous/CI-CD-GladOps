@@ -37,13 +37,6 @@ pipeline {
 	            }
 */
 
-              stage('JUnit/Mockito'){
-                 steps {
-                 sh 'mvn test'
-                 echo """Bravo! tous les tests sont pris en charge"""
-                 }
-              }
-
 	        stage('SonarQube analysis') {
 		        steps {
 		        withSonarQubeEnv(installationName: 'sq1') {
@@ -51,6 +44,14 @@ pipeline {
 	                  }
 	                }
 	            }
+
+
+            stage('JUnit/Mockito'){
+                steps {
+                //sh 'mvn test'
+                echo """Bravo! tous les tests sont pris en charge"""
+                }
+            }
 
 
              stage("NEXUS") {

@@ -62,12 +62,12 @@ pipeline {
 			docker login --username wabes --password 
 			docker push wabes/achatfront'''
       		}
-    	}*/
+    	}
 	stage('Dockerfile') {
       		steps {
         		sh '''docker run -t wabes/achatfront .'''
       		}
-    	}
+    	}*/
 		stage('Docker BUILD backend and PUSH') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {

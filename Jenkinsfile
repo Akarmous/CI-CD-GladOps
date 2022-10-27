@@ -5,12 +5,12 @@ pipeline {
     }
     
 	stages {
-/*	stage('Checkout GIT ') {
+	stage('Checkout GIT ') {
             steps {
                 echo 'Pulling ...';
                 git branch: 'Wassim', url: 'https://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@github.com/Akarmous/CI-CD-GladOps.git'            
 	    }
-        } */
+        } 
 	    
 	  stage('COMPILE') {
       		steps {
@@ -22,14 +22,14 @@ pipeline {
         		sh 'mvn -B -DskipTests clean package'
       		}
     	}
-	    
-      /*  stage('MVN TEST') {
+    
+        stage('MVN TEST') {
 		    steps {
 		    sh """mvn -version"""
 	        }
-	    } */
+	    } 
 	    
-       /* stage("SonarQube Analysis") {
+        stage("SonarQube Analysis") {
             steps {
               withSonarQubeEnv('SonarQube') {
                 sh 'mvn clean -DskipTests package sonar:sonar'
@@ -46,16 +46,16 @@ pipeline {
 		 sh'mvn test'
 		}
 		
-	}*/
+	}
 		
-  /*  stage('Docker BUILD backend') {
+    /*stage('Docker BUILD backend') {
       		steps {
         		sh '''docker build -t wabes/achatbackend:latest .
-			docker login --username wabes --password 
+			docker login --username wabes --password  
 			docker push wabes/achatbackend:latest'''
       		}
-    	} */
-		/*stage('Docker BUILD front') {
+    	} 
+		stage('Docker BUILD front') {
       		steps {
         		sh '''cd crud-tuto-front
 			docker build -t wabes/achatfront .
@@ -63,12 +63,12 @@ pipeline {
 			docker push wabes/achatfront'''
       		}
     	}*/
-	/*stage('Dockerfile') {
+	stage('Dockerfile') {
       		steps {
         		sh '''docker run -t wabes/achatfront .'''
       		}
-    	}*/
-		stage('Docker Build and Push') {
+    	}
+		stage('Docker BUILD backend and PUSH') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            

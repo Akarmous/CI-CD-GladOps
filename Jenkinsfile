@@ -14,13 +14,6 @@ pipeline {
                         }
                  }
 
-            stage('Cleaning the project') {
-                 steps{
-                    sh "mvn -B -DskipTests clean "
-                    }
-                    }
-
-/*
 
 	        stage('Build') {
       		    steps {
@@ -35,7 +28,7 @@ pipeline {
 		              mvn clean package """
 	                   }
 	            }
-*/
+
 
 	        stage('SonarQube analysis') {
 		        steps {
@@ -45,7 +38,7 @@ pipeline {
 	                }
 	            }
 
-/*
+
             stage('JUnit/Mockito'){
                 steps {
                 sh 'mvn test'
@@ -53,7 +46,7 @@ pipeline {
                       }
                 }
 
-*/
+
              stage("NEXUS") {
         	    steps {
 		        sh 'mvn clean deploy -DskipTests'

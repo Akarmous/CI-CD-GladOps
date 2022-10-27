@@ -48,6 +48,7 @@ pipeline {
 
             stage('JUnit/Mockito'){
                 steps {
+                sh 'mvn -version'
                 //sh 'mvn test'
                 echo """Bravo! tous les tests sont pris en charge"""
                 }

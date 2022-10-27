@@ -48,7 +48,8 @@ pipeline {
 
             stage('JUnit/Mockito'){
                 steps {
-                sh 'mvn -version'
+                sh '''mvn -version
+                mvn -B -DskipTests clean package'''
                 //sh 'mvn test'
                 echo """Bravo! tous les tests sont pris en charge"""
                 }

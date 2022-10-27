@@ -15,20 +15,27 @@ pipeline {
                  }
 
 
+            stage('Cleaning the project') {
+                 steps{
+                    sh "mvn -B -DskipTests clean  "
+                    }
+                }
+
+
 	        stage('Build') {
       		    steps {
         		sh 'mvn -B -DskipTests clean package'
       		          }
             	}
 
-
+/*
 	        stage('Testing maven') {
 		        steps {
 		        sh """mvn -version
 		              mvn clean package """
 	                   }
 	            }
-
+*/
 
 	        stage('SonarQube analysis') {
 		        steps {

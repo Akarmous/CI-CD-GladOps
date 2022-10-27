@@ -45,7 +45,7 @@ pipeline {
 	                }
 	            }
 
-/*
+
             stage('JUnit/Mockito'){
                 steps {
                 sh 'mvn test'
@@ -53,7 +53,7 @@ pipeline {
                       }
                 }
 
-*/
+
              stage("NEXUS") {
         	    steps {
 		        sh 'mvn clean deploy -DskipTests'

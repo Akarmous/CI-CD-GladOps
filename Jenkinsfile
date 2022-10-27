@@ -21,7 +21,7 @@ pipeline {
       		          }
             	}
 
-/*
+
 	        stage('Testing maven') {
 		        steps {
 		        sh """mvn -version
@@ -29,7 +29,7 @@ pipeline {
 	                   }
 	            }
 
-*/
+
 	        stage('SonarQube analysis') {
 		        steps {
 		        withSonarQubeEnv(installationName: 'sq1') {

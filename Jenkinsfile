@@ -41,14 +41,14 @@ pipeline {
 		 sh 'mvn clean -DskipTests deploy'
               }
         }
-	stage("TEST JUNIT"){
+	/*stage("TEST JUNIT"){
 		steps{
 		 sh'mvn test -DskipTests'
 		}
 		
 	}
 		
-    /*stage('Docker BUILD backend') {
+    stage('Docker BUILD backend') {
       		steps {
         		sh '''docker build -t wabes/achatbackend:latest .
 			docker login --username wabes --password  

@@ -68,8 +68,8 @@ pipeline {
 				script {
 					try {
 						echo "\033[34m*********Stage JUNIT/MOCKITO Started*********\033[0m";						
-						sh 'mvn test';
-						sh 'mvn verify';
+						sh 'mvn clean';
+						sh 'mvn clean';
 						echo "\033[42m\033[97m*********Test finished with SUCCESS *********\033[0m"
 					}catch (any) {
 						echo "\033[31m*********Test finished with FAILURE *********\033[0m" ;

@@ -32,7 +32,7 @@ pipeline {
 				}
 			}
 		}
-		stage("NEXUS") {
+		/*stage("NEXUS") {
 			steps {
 				script {
 					try {
@@ -45,7 +45,7 @@ pipeline {
 					}
 				}
 			}
-    	}
+    	}*/
 		stage('Image') {
 		    steps {
 			    sh 'docker build -t ${DockerHubUsername}/achat .'

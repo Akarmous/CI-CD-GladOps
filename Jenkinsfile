@@ -63,27 +63,6 @@ pipeline {
 				}
 			}
     	}
-		stage ("JUNIT / MOCKITO") {
-	    	steps {
-				script {
-					try {
-						echo "\033[34m*********Stage JUNIT/MOCKITO Started*********\033[0m";						
-						sh 'mvn clean';
-						sh 'mvn clean';
-						echo "\033[42m\033[97m*********Test finished with SUCCESS *********\033[0m"
-					}catch (any) {
-						echo "\033[31m*********Test finished with FAILURE *********\033[0m" ;
-						throw any
-					} finally {
-						echo "\033[34m*********Mail Sending*********\033[0m";
-						emailext body: """${currentBuild.currentResult}: stage "JUNIT / MOCKITO" build n°${env.BUILD_NUMBER}  
-						More info at: ${env.BUILD_URL}""", 
-		    			to: 'abdeslem.bc@gmail.com',
-		    			subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
-					} 
-				}          	
-			}
-    	}
 		stage('Back Image Build') {
 		    steps {
 				echo "\033[34m*********Building Back Image started*********\033[0m";
@@ -115,6 +94,27 @@ pipeline {
 				echo "\033[42m\033[97m*********Apllication Is Started *********\033[0m"
 			}
 		}
+		stage ("JUNIT / MOCKITO") {
+	    	steps {
+				script {
+					try {
+						echo "\033[34m*********Stage JUNIT/MOCKITO Started*********\033[0m";						
+						sh 'mvn test';
+						sh 'mvn clean';
+						echo "\033[42m\033[97m*********Test finished with SUCCESS *********\033[0m"
+					}catch (any) {
+						echo "\033[31m*********Test finished with FAILURE *********\033[0m" ;
+						throw any
+					} finally {
+						echo "\033[34m*********Mail Sending*********\033[0m";
+						emailext body: """${currentBuild.currentResult}: stage "JUNIT / MOCKITO" build n°${env.BUILD_NUMBER}  
+						More info at: ${env.BUILD_URL}""", 
+		    			to: 'abdeslem.bc@gmail.com',
+		    			subject: """ Jenkins stage Build ${currentBuild.currentResult}: Stage "${env.STAGE_NAME}" """ 
+					} 
+				}          	
+			}
+    	}
 	}
 	post {
     	always {

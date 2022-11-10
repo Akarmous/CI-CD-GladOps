@@ -70,7 +70,7 @@ pipeline {
 
              stage("DockerLogin") {
                 steps {
-                sh 'docker login --username alakrms --password Azerty789+'
+                sh 'docker login --username alakrms --password yourpasswordhere'
                 }
                 }
 

@@ -10,11 +10,11 @@ pipeline {
         		sh 'mvn compile'
       		}
     	}
-	/*	stage('Unit tests') {
+		stage('Unit tests') {
       		steps {
         		sh 'mvn test'
       		}
-    	}    */
+    	}    
 	    stage('Build') {
       		steps {
         		sh "mvn clean package -DskipTests=true"
@@ -23,7 +23,7 @@ pipeline {
     	}
 	   
 	    
-      /*  stage('SonarQube quality tests') {
+        stage('SonarQube quality tests') {
 		    steps {
 		    sh "mvn sonar:sonar -Dsonar.projectKey=jenkins-ahmed -Dsonar.host.url=http://192.168.1.18:9000 -Dsonar.login=c3c260fec661be0c76af7f2bbc2e029ccab74278"
 	        }
@@ -32,7 +32,7 @@ pipeline {
 			steps {
 				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 			}
-		} */
+		} 
 	    
         stage('Docker Build and Push') {
             steps {
